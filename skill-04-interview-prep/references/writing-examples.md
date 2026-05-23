@@ -5,6 +5,16 @@ This file is the canonical style reference for Skills 02 and 04. When writing an
 
 ---
 
+## A Critical Note on Numbers
+
+Every number in every example in this file came from the candidate's actual source material. None were invented, estimated, or inferred.
+
+This is not optional. The hard rule in `skill-02-resume-writer/SKILL.md` under "Number and data integrity" prohibits fabricating any quantified claim. If a number does not exist in what the user provided, the skill must either ask for the real figure before writing the bullet, or write without the number and flag the gap in a "Numbers needed" section after the draft.
+
+Do not use the examples in this file as license to add numbers that the user has not supplied. The examples show what strong output looks like when the data exists. They do not authorize inventing data when it does not.
+
+---
+
 ## Resume Writing Style
 
 ### Professional Summary: approved pattern
