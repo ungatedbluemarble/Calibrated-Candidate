@@ -169,6 +169,11 @@ If the user provides a job description:
 Inform the user:
 > "Your resume is ready as a Word document. Say 'give me the PDF version' or 'ATS plain text' if you need either of those formats."
 
+**HTML before and after (on request only):** After delivering the Word document, offer once:
+> "Would you like an HTML version showing the before and after of your rewrite, formatted for sharing or presenting visually?"
+
+Only generate if the user says yes. Use the Interview Ready design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Show the original language on the left and the rewritten language on the right. Anonymize with Jane Doe or John Doe if the user requests it for sharing. Do not generate this automatically.
+
 ---
 
 ## Performance Notes

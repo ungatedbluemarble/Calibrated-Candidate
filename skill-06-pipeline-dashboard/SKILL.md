@@ -89,34 +89,21 @@ Read the outcome field of each interview_history entry and assign a status label
 
 ## Dashboard Output
 
-Present the dashboard as a status table followed by a brief attention summary. Do not dump raw JSON. Do not present closed entries unless the user asks to see them.
+Generate a read-only HTML file and present it to the user. Do not render an interactive widget in chat. Do not include buttons or clickable elements in the file. The HTML file is a snapshot. All actions happen in the conversation after the user has reviewed it.
 
-**Standard output format:**
+Use `/references/dashboard-template.html` as the structural base. Replace all placeholder values with real data from the user profile. Remove template sections that have no data. Do not add interactive elements.
 
----
-**Your Job Search Pipeline**
+Generate the dashboard once per session when the user first requests it. Do not regenerate it on every mid-session update. If the user updates a record mid-session, confirm the change in plain text conversation only. If the user explicitly asks to see a refreshed dashboard, generate a new file at that point.
 
-| Company | Role | Stage | Interview Date | Status |
-|---|---|---|---|---|
-| [Company] | [Role] | Hiring Manager | June 4 | Prep Complete |
-| [Company] | [Role] | Recruiter Screen | June 7 | Interview Scheduled |
-| [Company] | [Role] | Panel | TBD | Awaiting Feedback |
+The HTML file must include:
 
-**What needs attention:**
-[See attention logic below]
+1. A summary header showing total active applications, interviews scheduled in the next 7 days, and any offers pending.
+2. A clean application table with one row per active entry showing: company, role, stage, status, interview date, and last recruiter contact.
+3. An attention section listing only entries that need action, with a plain language description of what needs attention and why.
 
----
+Do not include closed entries in the default view. If the user asks to see closed entries, note them in a separate section at the bottom of the file.
 
-**Attention logic:**
-
-Flag an entry if any of the following are true:
-
-- Interview date is within 3 days and status is Active or Prep Complete: "Your [Company] [stage] is in [X days]. Do you want to run prep now?"
-- Interview date has passed and outcome is still empty: "Your [Company] [stage] was [X days] ago with no outcome recorded. Do you want to update the status?"
-- Status is Awaiting Feedback and interview date was more than 7 days ago: "You have been waiting on [Company] for [X days]. Do you want to prep a follow-up?"
-- No activity logged for an entry in more than 14 days and status is Active: "You have not logged any activity on [Company] in [X days]. Do you want to mark it closed or follow up?"
-
-If nothing needs attention, say so directly: "Everything looks current. No action needed right now."
+After presenting the file, follow with a brief plain text summary of what needs the most urgent attention. Then ask what the user wants to do next. Let the conversation handle all actions from that point.
 
 ---
 

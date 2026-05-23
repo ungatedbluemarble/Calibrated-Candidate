@@ -1,0 +1,384 @@
+<!--
+PIPELINE DASHBOARD TEMPLATE
+Skill 06: Pipeline Dashboard | Interview Ready
+
+Generate this file populated with real data from the user profile.
+Replace all [PLACEHOLDER] values. Remove unused example rows and attention cards.
+Do not add interactive elements. This is a read-only snapshot.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Job Search Pipeline | Interview Ready</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg2: #eeeae2;
+    --bg3: #e4dfd5;
+    --text: #1a1814;
+    --text2: #4a4640;
+    --text3: #7a7570;
+    --accent: #1a4a2e;
+    --accent2: #2d7a4f;
+    --accent-light: #e8f5ee;
+    --border: #d4cfc6;
+    --header-bg: #1a1814;
+    --header-text: #f7f5f0;
+    --tag-bg: #1a4a2e;
+    --tag-text: #e8f5ee;
+    --card-bg: #ffffff;
+    --shadow: 0 2px 12px rgba(26,24,20,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,24,20,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12100e;
+      --bg2: #1c1a17;
+      --bg3: #252220;
+      --text: #f0ece4;
+      --text2: #b8b4ac;
+      --text3: #7a7570;
+      --accent: #4aab6d;
+      --accent2: #6dcc8f;
+      --accent-light: #0f2a1a;
+      --border: #2e2b27;
+      --header-bg: #0a0908;
+      --header-text: #f0ece4;
+      --tag-bg: #0f2a1a;
+      --tag-text: #4aab6d;
+      --card-bg: #1c1a17;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(74,171,109,0.03) 40px, rgba(74,171,109,0.03) 41px);
+  }
+  .header-tag {
+    display: inline-block;
+    background: var(--accent2);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--header-text);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  header h1 em { font-style: italic; color: var(--accent2); }
+  .header-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: rgba(240,236,228,0.5);
+    position: relative;
+  }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  section { margin-bottom: 3rem; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .summary-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .summary-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent2);
+  }
+  .summary-card .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--accent2);
+    line-height: 1;
+  }
+  .summary-card .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text3);
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .attention-card {
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+  }
+  .attention-urgent { border-color: #c0392b; }
+  .attention-warn { border-color: #c08800; }
+  .attention-good { border-color: var(--accent2); }
+  .attention-card .attn-company {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  .attention-card .attn-detail {
+    font-size: 0.88rem;
+    color: var(--text2);
+    margin-top: 0.15rem;
+  }
+  .attn-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .label-urgent { color: #c0392b; }
+  .label-warn { color: #c08800; }
+  .label-good { color: var(--accent2); }
+
+  .all-clear {
+    background: var(--accent-light);
+    border: 1px solid var(--accent2);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; box-shadow: var(--shadow); }
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: var(--bg3);
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg2); }
+
+  .company-name { font-weight: 500; color: var(--text); font-size: 0.95rem; }
+  .role-name { font-size: 0.82rem; color: var(--text3); margin-top: 2px; }
+
+  .stage-pill {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .pill-recruiter { background: #eef4ff; color: #2a5cb8; }
+  .pill-hiring { background: #fff8ee; color: #8a5a00; }
+  .pill-panel { background: var(--bg3); color: var(--text2); }
+  .pill-final { background: var(--accent-light); color: var(--accent); }
+  .pill-offer { background: var(--accent); color: #fff; }
+
+  .status-dot { display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; white-space: nowrap; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-active { background: var(--accent2); }
+  .dot-scheduled { background: #2a5cb8; }
+  .dot-waiting { background: #c08800; }
+  .dot-complete { background: var(--text3); }
+  .dot-offer { background: var(--accent2); }
+
+  .date-soon { color: #c0392b; font-weight: 500; }
+  .no-val { color: var(--text3); font-style: italic; font-size: 0.85rem; }
+  .contact-val { font-size: 0.85rem; }
+
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text3);
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 2rem 1.25rem 1.5rem; }
+    main { padding: 1.5rem 1.25rem 3rem; }
+    .summary-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">Pipeline Dashboard</div>
+  <h1>Your Job Search <em>Pipeline</em></h1>
+  <div class="header-meta">Generated [DATE] at [TIME] - tell Claude what you want to do next</div>
+</header>
+
+<main>
+
+  <div class="summary-row">
+    <div class="summary-card">
+      <div class="num">[ACTIVE_COUNT]</div>
+      <div class="label">Active applications</div>
+    </div>
+    <div class="summary-card">
+      <div class="num">[SCHEDULED_COUNT]</div>
+      <div class="label">Interviews this week</div>
+    </div>
+    <div class="summary-card">
+      <div class="num">[OFFERS_COUNT]</div>
+      <div class="label">Offers pending</div>
+    </div>
+    <div class="summary-card">
+      <div class="num">[ATTENTION_COUNT]</div>
+      <div class="label">Need attention</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>What Needs Attention</h2>
+
+    <!-- URGENT: interview within 3 days, no prep done. Remove if not applicable. -->
+    <div class="attention-card attention-urgent">
+      <div class="attn-label label-urgent">Urgent</div>
+      <div class="attn-company">[COMPANY] - [ROLE]</div>
+      <div class="attn-detail">[STAGE] is in [X] days. No prep completed for this stage yet.</div>
+    </div>
+
+    <!-- WARNING: awaiting feedback more than 7 days. Remove if not applicable. -->
+    <div class="attention-card attention-warn">
+      <div class="attn-label label-warn">Follow up</div>
+      <div class="attn-company">[COMPANY] - [ROLE]</div>
+      <div class="attn-detail">[STAGE] was [X] days ago with no outcome recorded. Consider following up or marking closed.</div>
+    </div>
+
+    <!-- OFFER PENDING. Remove if not applicable. -->
+    <div class="attention-card attention-good">
+      <div class="attn-label label-good">Offer pending</div>
+      <div class="attn-company">[COMPANY] - [ROLE]</div>
+      <div class="attn-detail">Offer received. Ask Claude to help you prepare for negotiation before responding.</div>
+    </div>
+
+    <!-- ALL CLEAR: use this instead of the cards above if nothing needs attention. -->
+    <!-- <div class="all-clear">Everything looks current. No action needed right now.</div> -->
+  </section>
+
+  <section>
+    <h2>Active Applications</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Company and role</th>
+            <th>Stage</th>
+            <th>Status</th>
+            <th>Interview date</th>
+            <th>Last recruiter contact</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Copy and populate one row per active application. -->
+
+          <tr>
+            <td>
+              <div class="company-name">[COMPANY]</div>
+              <div class="role-name">[ROLE]</div>
+            </td>
+            <td><span class="stage-pill pill-final">Final round</span></td>
+            <td><span class="status-dot"><span class="dot dot-scheduled"></span>Interview scheduled</span></td>
+            <td class="date-soon">Jun 3</td>
+            <td class="contact-val">[NAME or EMAIL] - [DATE]</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="company-name">[COMPANY]</div>
+              <div class="role-name">[ROLE]</div>
+            </td>
+            <td><span class="stage-pill pill-hiring">Hiring manager</span></td>
+            <td><span class="status-dot"><span class="dot dot-waiting"></span>Awaiting feedback</span></td>
+            <td class="no-val">No date set</td>
+            <td class="no-val">Not stored</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="company-name">[COMPANY]</div>
+              <div class="role-name">[ROLE]</div>
+            </td>
+            <td><span class="stage-pill pill-recruiter">Recruiter screen</span></td>
+            <td><span class="status-dot"><span class="dot dot-scheduled"></span>Interview scheduled</span></td>
+            <td>Jun 7</td>
+            <td class="contact-val">[NAME or EMAIL] - [DATE]</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="company-name">[COMPANY]</div>
+              <div class="role-name">[ROLE]</div>
+            </td>
+            <td><span class="stage-pill pill-offer">Offer received</span></td>
+            <td><span class="status-dot"><span class="dot dot-offer"></span>Offer received</span></td>
+            <td>May 28</td>
+            <td class="contact-val">[NAME or EMAIL] - [DATE]</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    Snapshot generated from your saved profile on [DATE].<br>
+    Changes made in this session are not reflected here. Ask Claude for a refreshed dashboard after significant updates.<br>
+    Say "save my profile" to preserve any changes made this session.
+  </div>
+
+</main>
+
+</body>
+</html>

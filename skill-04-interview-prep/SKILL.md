@@ -195,6 +195,11 @@ If the recruiter insists on a number before moving forward and the candidate dec
 - A reminder that giving a number too early is almost always a mistake
 - The jurisdiction note on salary history laws if applicable
 
+**HTML compensation report (on request only):** After delivering the compensation section of any prep document, offer once:
+> "Would you like an HTML version of this compensation analysis formatted for easy reference during your negotiation?"
+
+Only generate if the user says yes. Use the Interview Ready design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Include salary law findings, the benchmarking table, a visual range bar with the recommended anchor marked, and the negotiation scripts. Do not generate this automatically.
+
 ### Hiring Manager
 
 **What it is:** Strategic alignment and fit assessment. The hiring manager already knows you can do the job. This conversation is about how you think, whether you'd operate well in their team, and whether you share their vision for the work.
