@@ -6,6 +6,12 @@ Works in Claude.ai (browser), Claude Desktop, and Claude Code.
 
 ---
 
+## Disclaimer
+
+Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
+
+---
+
 ## What This Is
 
 Interview Ready is a structured, research-grounded career preparation system built as Claude skills. Each skill is autonomous but context-aware: they share a user profile so you are never asked the same question twice across the workflow.
@@ -168,12 +174,6 @@ The user profile built in Skill 01 carries forward into every other skill automa
 | Panel Interview Prep Guide | Skill 04 | .docx |
 | Final Round Prep Guide | Skill 04 | .docx |
 | Offer Negotiation Guide | Skill 04 | .docx |
-
----
-
-## Disclaimer
-
-Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
 
 ---
 
