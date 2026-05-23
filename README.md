@@ -1,6 +1,6 @@
 # Interview Ready: Claude Skill Package
 
-A four-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, and full interview pipeline preparation through offer negotiation.
+A five-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, and live EEOC-compliant mock interview sessions.
 
 Works in Claude.ai (browser), Claude Desktop, and Claude Code. Gemini Gem port planned.
 
@@ -14,7 +14,7 @@ Every output is grounded in actual company research and your real background. Th
 
 ---
 
-## The Four Skills
+## The Five Skills
 
 | Skill | What It Does |
 |---|---|
@@ -22,6 +22,7 @@ Every output is grounded in actual company research and your real background. Th
 | `skill-02-resume-writer` | Accepts your resume via file upload or any document source. Rewrites or builds your resume and cover letter in professional, human language. Primary output is Word (.docx). |
 | `skill-03-job-search` | Matches your profile to industries and roles. Evaluates job descriptions you bring: individually or in bulk. Tells you whether to apply and how to position. |
 | `skill-04-interview-prep` | Prepares you for every stage of the hiring pipeline: recruiter screen, hiring manager, panel, final round, and offer negotiation. Research-grounded, role-specific, candidate-anchored prep documents. |
+| `skill-05-mock-interviewer` | Runs a live, interactive mock interview session tailored to a specific job description and the candidate's real background. Three modes: standard practice, deep simulation, and quiz mode. Every answer graded against an EEOC-compliant standard. |
 
 ---
 
@@ -56,7 +57,7 @@ In Settings → Capabilities, make sure **Code Execution** is turned on. Skills 
 
 Each skill is a separate folder inside the ZIP you downloaded. You need to upload them one at a time.
 
-For each of the four skill folders (`skill-01-interviewer`, `skill-02-resume-writer`, `skill-03-job-search`, `skill-04-interview-prep`):
+For each of the five skill folders (`skill-01-interviewer`, `skill-02-resume-writer`, `skill-03-job-search`, `skill-04-interview-prep`, `skill-05-mock-interviewer`):
 
 1. Create a new ZIP file containing just that one skill folder
 2. Click **Upload skill** in the Skills settings panel
@@ -124,6 +125,7 @@ You can also go directly to any skill:
 | "Write my resume" / "Update my cover letter" | Skill 02: Resume Writer |
 | "Find jobs for me" / "Review this job description" | Skill 03: Job Search Expert |
 | "I have an interview" / "Prep me for my interview" | Skill 04: Interview Prep |
+| "Mock interview" / "Practice with me" / "Interview me" / "Quiz me on the role" | Skill 05: Mock Interviewer |
 
 ---
 

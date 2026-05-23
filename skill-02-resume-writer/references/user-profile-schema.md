@@ -120,7 +120,7 @@ On subsequent sessions, the user uploads or references this file and any skill c
 | experience, education, certifications | Skill 01 (interview) or Skill 02 (resume parse) |
 | salary_law_cache | Skill 04: Interview Prep (auto-updated on first use and each US fiscal quarter) |
 | documents | Skill 02: Resume Writer |
-| interview_history | Skill 04: Interview Prep |
+| interview_history | Skill 04: Interview Prep and Skill 05: Mock Interviewer |
 
 ---
 
@@ -134,3 +134,6 @@ Needs: `background`, `strengths`, `weaknesses`, `search_status`, `experience` (t
 
 **Skill 04: Interview Prep**
 Needs: `identity`, `background`, `experience`, `strengths`, `weaknesses`, `search_status.target_roles`, `interview_history`, `salary_law_cache`
+
+**Skill 05: Mock Interviewer**
+Needs: `identity`, `background`, `experience`, `strengths`, `weaknesses`, `search_status.target_roles`, `interview_history`

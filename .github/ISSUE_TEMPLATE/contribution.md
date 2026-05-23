@@ -23,6 +23,8 @@ assignees: ''
 - [ ] skill-03-job-search/assets
 - [ ] skill-04-interview-prep/references
 - [ ] skill-04-interview-prep/assets
+- [ ] skill-05-mock-interviewer/references
+- [ ] skill-05-mock-interviewer/assets
 
 **What does this file do?**
 Describe what the file contains, what problem it solves, and when Claude should load it.

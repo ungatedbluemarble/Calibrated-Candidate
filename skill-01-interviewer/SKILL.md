@@ -105,6 +105,7 @@ Once the profile is complete, tell the user what they can do next:
 > - **Resume and cover letter**: I can write or rewrite your resume and cover letter based on your profile
 > - **Job search**: I can help you find roles that match your background and evaluate job descriptions you bring me
 > - **Interview prep**: I can prepare you for recruiter screens, hiring manager conversations, and every stage through offer negotiation
+> - **Mock interview**: I can run a live practice session tailored to a specific role -- standard practice, deep simulation, or quiz mode -- and grade every answer against an EEOC-compliant standard
 >
 > What would you like to work on first?"
 
@@ -135,3 +136,5 @@ The `references/` folder contains optional intake extensions for specific candid
 If none of these files exist yet, proceed with the standard onboarding sequence. Contributors can add reference files for any population that the default intake does not serve well. See `references/README.md` for guidance on what each file should contain and how SKILL.md should route to it.
 
 The `assets/` folder supports onboarding extensions such as profile export templates, flow diagrams, and custom intake question sets. See `assets/README.md` for details.
+
+Skill 05 (Mock Interviewer) is available as a standalone skill that works with the same profile built here. Once the profile is complete and a job description is available, the user can go directly to mock interview practice without running Skill 04 first.

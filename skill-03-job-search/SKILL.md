@@ -125,9 +125,9 @@ When the user is evaluating a specific company or role and needs market context:
 ## Handoff
 
 After JD evaluation, ask:
-> "Would you like me to tailor your resume and cover letter for this role, or move to interview prep?"
+> "Would you like me to tailor your resume and cover letter for this role, move to interview prep, or run a mock interview session for this role?"
 
-Route to Skill 02 or Skill 04 based on the answer.
+Route to Skill 02, Skill 04, or Skill 05 based on the answer.
 
 ---
 

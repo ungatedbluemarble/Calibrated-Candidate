@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interview Ready: Claude Skill Package</title>
+<title>Interview Ready: Claude Skill Package, 5 Skills</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
@@ -410,9 +410,9 @@
 <body>
 
 <header>
-  <div class="header-tag">Open Source Claude Skill Package</div>
+  <div class="header-tag">Open Source Claude Skill Package, 5 Skills</div>
   <h1>Interview <em>Ready</em></h1>
-  <p class="header-sub">A free, research-grounded career preparation system built for anyone, no consultant, no paywall, no prior experience required.</p>
+  <p class="header-sub">A free, five-skill career preparation system built for anyone, no consultant, no paywall, no prior experience required.</p>
   <div class="header-btns">
     <a href="https://github.com/ungatedbluemarble/interview-ready" class="btn btn-primary" target="_blank" rel="noopener">Get it on GitHub</a>
     <a href="#installation" class="btn btn-secondary">How to install</a>
@@ -444,7 +444,7 @@
   </section>
 
   <section id="skills">
-    <h2>The Four Skills</h2>
+    <h2>The Five Skills</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-num">SKILL 01</div>
@@ -465,6 +465,11 @@
         <div class="skill-num">SKILL 04</div>
         <div class="skill-name">Interview Prep</div>
         <p class="skill-desc">Prepares you for every stage of the hiring pipeline: recruiter screen, hiring manager, panel, final round, and offer negotiation. Research-grounded, role-specific prep documents with live salary law and compensation intelligence.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-num">SKILL 05</div>
+        <div class="skill-name">Mock Interviewer</div>
+        <p class="skill-desc">Runs a live, interactive mock interview tailored to the specific job description and your real background. Three modes: standard practice, deep simulation, and quiz mode. Every answer graded against an EEOC-compliant standard.</p>
       </div>
     </div>
   </section>
@@ -512,7 +517,7 @@
       <div class="step-num">4</div>
       <div class="step-content">
         <strong>Upload each skill</strong>
-        <p>Each skill is a separate folder inside the ZIP. Create a ZIP for each folder and upload one at a time using the Upload skill button.</p>
+        <p>Each skill is a separate folder inside the ZIP. Create a ZIP for each of the five skill folders and upload one at a time using the Upload skill button.</p>
         <p><strong>On Mac:</strong> right-click the skill folder → Compress<br>
         <strong>On Windows:</strong> right-click → Send to → Compressed (zipped) folder</p>
       </div>
@@ -544,6 +549,7 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
         <tr><td>"Write my resume" / "Update my cover letter"</td><td>Skill 02: Resume Writer</td></tr>
         <tr><td>"Find jobs for me" / "Review this job description"</td><td>Skill 03: Job Search Expert</td></tr>
         <tr><td>"I have an interview" / "Prep me for my interview"</td><td>Skill 04: Interview Prep</td></tr>
+        <tr><td>"Mock interview" / "Practice with me" / "Interview me" / "Quiz me on the role"</td><td>Skill 05: Mock Interviewer</td></tr>
         <tr><td>"Show me my pipeline status" / "Where am I with my applications"</td><td>Skill 04: Pipeline Dashboard</td></tr>
       </tbody>
     </table>
@@ -589,7 +595,9 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
 
   <section id="session">
     <h2>Managing Your Session</h2>
-    <p>Interview Ready is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.</p>
+    <p><strong>Note:</strong> Skill 05 (Mock Interviewer) does not produce a document output. Session results are recorded in your profile interview history and a session summary is delivered in chat.</p>
+
+  <p>Interview Ready is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.</p>
 
     <h3>Estimated Token Usage</h3>
     <table>
@@ -600,7 +608,9 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
         <tr><td>Skill 03: Single JD evaluation</td><td>3,000 to 5,000</td></tr>
         <tr><td>Skill 03: Bulk JD review (5 JDs)</td><td>10,000 to 15,000</td></tr>
         <tr><td>Skill 04: Single stage prep document</td><td>8,000 to 12,000</td></tr>
-        <tr><td>Skill 04: Mock interview session</td><td>4,000 to 8,000</td></tr>
+        <tr><td>Skill 05: Standard practice session</td><td>4,000 to 8,000</td></tr>
+        <tr><td>Skill 05: Deep simulation session</td><td>6,000 to 12,000</td></tr>
+        <tr><td>Skill 05: Quiz mode session</td><td>3,000 to 6,000</td></tr>
       </tbody>
     </table>
 

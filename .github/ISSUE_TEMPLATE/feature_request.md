@@ -11,6 +11,7 @@ assignees: ''
 - [ ] Skill 02: Resume Writer
 - [ ] Skill 03: Job Search Expert
 - [ ] Skill 04: Interview Prep
+- [ ] Skill 05: Mock Interviewer
 - [ ] New skill (describe below)
 - [ ] Package-wide
 
