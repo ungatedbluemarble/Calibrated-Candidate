@@ -1,7 +1,7 @@
 ---
 name: interview-ready-interview-prep
 description: >
-  Prepares a job seeker for every stage of the hiring pipeline from recruiter screen through offer negotiation. Produces research-grounded, candidate-specific prep documents as Word deliverables. Use this skill whenever a user has an interview coming up, asks how to prepare for a recruiter call, wants to know what questions to expect, needs help preparing for a hiring manager conversation, panel interview, or final round, or says "I have an interview", "prep me for my interview", "what should I say", "help me practice", or any variation of interview preparation. Also triggers when the user asks about their application pipeline status, says "where am I with my applications", "show me my pipeline", "what interviews do I have coming up", "add this to my tracker", or any variation of job search status tracking. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
+  Prepares a job seeker for every stage of the hiring pipeline from recruiter screen through offer negotiation. Produces research-grounded, candidate-specific prep documents as Word deliverables. Use this skill whenever a user has an interview coming up, asks how to prepare for a recruiter call, wants to know what questions to expect, needs help preparing for a hiring manager conversation, panel interview, or final round, or says "I have an interview", "prep me for my interview", "what should I say", "help me practice", or any variation of interview preparation. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
 ---
 
 # Skill 04: Interview Prep
@@ -216,6 +216,24 @@ If the recruiter insists on a number before moving forward and the candidate dec
 
 See `/references/hiring-manager-example.md` for the structural example this skill is modeled on.
 
+### Reference Preparation
+
+When a candidate reaches the final round or post-offer stage, advise them to prepare their references proactively. Do not wait for the user to ask. See `/references/reference-preparation.md` for full guidance on who to choose, how to ask, how to brief references, and what reference checkers typically ask.
+
+Surface reference preparation as a prep action item in the Final Round prep document and in the Offer Negotiation guide.
+
+### Follow-Up Cadence
+
+After generating any stage prep document, include a follow-up cadence note telling the candidate exactly when and how to follow up if they do not hear back. See `/references/follow-up-cadence.md` for stage-by-stage timing, email templates, and guidance on when to stop following up.
+
+Do not leave the candidate without explicit follow-up instructions after any prep document is generated.
+
+### Resignation Handling
+
+When a candidate receives and accepts an offer, provide resignation handling guidance before closing the session. See `/references/resignation-handling.md` for guidance on timing, the resignation conversation, notice period, counteroffer handling, and the transition period.
+
+Surface this guidance proactively in the Offer Negotiation guide under a section titled "After You Accept."
+
 ### Panel Interview
 
 **What it is:** Multi-stakeholder evaluation. Different interviewers are assessing different dimensions. The challenge is consistency while adapting to each person's lens.
@@ -306,65 +324,7 @@ This allows the skill to track where the user is in multiple active pipelines an
 After generating the prep document, ask:
 > "Do you want to run a practice session? I can ask you likely questions and give you feedback on your answers."
 
-If yes: enter mock interview mode using the full structure below.
-
----
-
-## Mock Interview Mode
-
-Mock interview mode is a structured practice session tied to the specific stage and role the user is preparing for. It is not a generic Q&A. Every question asked must be drawn from the prep document already generated for this session.
-
-**Opening the session:**
-> "Let's run through some practice questions. I will ask them one at a time, as a real interviewer would. Answer as you would in the actual interview. After each answer I will give you direct feedback on what worked, what to sharpen, and what to cut. Ready?"
-
-Wait for the user to confirm before starting.
-
-**Question selection by stage:**
-
-| Stage | Question focus | Number of questions |
-|---|---|---|
-| Recruiter Screen | Background, motivation, role fit, compensation | 4-5 |
-| Hiring Manager | Strategic thinking, anchored examples, vision alignment | 5-7 |
-| Panel | Mix of technical, behavioral, and peer-level questions | 6-8 |
-| Final Round | Executive presence, leadership philosophy, forward vision | 4-6 |
-
-Always start with the question the user is most likely to face first in that interview. For a recruiter screen that is almost always "Tell me about yourself" or "Walk me through your background." For a hiring manager it is usually "Why this role?" or "Tell me about yourself" at a higher register.
-
-**Running each question:**
-
-Step 1: Ask the question exactly as a real interviewer would ask it. No preamble, no hints.
-
-Step 2: Wait for the user to answer in full.
-
-Step 3: Give structured feedback using this format every time:
-
-> **What landed:** [What was specific, credible, and compelling. Name the exact phrase or moment.]
->
-> **Sharpen this:** [One thing to tighten, clarify, or reframe. Be specific about what to change and why.]
->
-> **Cut this:** [Anything that weakened the answer: over-explanation, filler, hedging, or off-topic content. If nothing to cut, say so.]
->
-> **Anchor check:** [Did the answer include a specific example grounded in the candidate's real background? If not, name the gap and suggest which example from their profile would fit.]
-
-Step 4: Ask if they want to try the question again before moving on, or proceed to the next question. Do not force a retry. Let the candidate decide.
-
-**Feedback rules:**
-- Never say "great answer" without specifying what made it great.
-- Never say "that was good but..." The "but" erases everything before it. Use "and" or start fresh with "Sharpen this."
-- Never give more than three pieces of feedback per answer. Pick the highest-impact items.
-- If the answer was genuinely strong, say so directly and explain why, then move on. Do not manufacture criticism.
-- If the answer was weak, be honest. A mock session that lets weak answers pass is useless.
-
-**Tracking weak areas:**
-Keep a running internal note of which question types the candidate struggles with. At the end of the session, surface a summary:
-
-> "Here is what I noticed across the session:
-> [Strength]: Your strongest answers were on [topic]. You were specific, grounded, and confident.
-> [Pattern to address]: You tended to [over-explain / hedge / lose the example / trail off] when answering [type of question]. Before the real interview, spend time on [specific preparation action].
-> [One priority]: If you only work on one thing before [interview date], make it [specific answer or topic]."
-
-**Closing the session:**
-After the final question and summary, remind the user to save their profile and offer to generate the thank-you note template if they have not already received it.
+If yes: do not run mock interview logic inside this skill. Route to Skill 05: Mock Interviewer, which handles all practice sessions including standard practice, deep simulation, and quiz mode. Pass the current role, stage, and prep document context so Skill 05 can calibrate its questions to this specific interview.
 
 ---
 
@@ -379,68 +339,6 @@ If the user says "save my profile" at any point, write the full current profile 
 > "Your profile has been saved. Upload this file at the start of any future Interview Ready session to pick up where you left off. Your interview history, background, and preferences will all carry forward."
 
 **Why this matters:** Session-persistent context does not survive when the conversation ends. A user managing multiple active job pipelines across several companies and stages will lose all tracking if the profile is not exported. The prompt must appear at the end of every prep session without exception, even if the user did not ask for it.
-
----
-
-## Pipeline Status Dashboard
-
-Trigger this when the user asks any of the following:
-- "Where am I with my applications?"
-- "Show me my pipeline status"
-- "What interviews do I have coming up?"
-- "Which companies am I tracking?"
-- "Give me a summary of my job search"
-- Any variation of requesting an overview of their active applications
-
-**How to generate the dashboard:**
-
-Read the `interview_history` array from the current profile. For each entry, determine the current status using this logic:
-
-| outcome field value | Status label |
-|---|---|
-| "" (empty) | Active |
-| "scheduled" | Interview Scheduled |
-| "prep complete" | Prep Complete |
-| "awaiting feedback" | Awaiting Feedback |
-| "offer received" | Offer Received |
-| "offer accepted" | Accepted |
-| "offer declined" | Declined |
-| "rejected" | Closed: Rejected |
-| "withdrawn" | Closed: Withdrawn |
-| "no response" | Closed: No Response |
-
-**Dashboard output format:**
-
-Present the dashboard as a clean summary table followed by a brief narrative on what needs attention. Do not dump raw JSON at the user.
-
-Example output structure:
-
----
-**Your Job Search Pipeline**
-
-| Company | Role | Stage | Interview Date | Status |
-|---|---|---|---|---|
-| [Company] | [Role] | Hiring Manager | June 4 | Prep Complete |
-| [Company] | [Role] | Recruiter Screen | June 7 | Interview Scheduled |
-| [Company] | [Role] | Panel | TBD | Awaiting Feedback |
-
-**What needs attention:**
-- Your [Company] panel was [X days] ago with no outcome recorded. Do you want to update the status or prep a follow-up?
-- Your [Company] recruiter screen is in [X days]. Do you want to run prep now?
-- You have not logged any activity on [Company] in [X days]. Do you want to mark it closed or follow up?
-
----
-
-**Prompts to offer after the dashboard:**
-- "Do you want to prep for any of these upcoming interviews?"
-- "Do you want to update the status on any of these?"
-- "Do you want to add a new application to track?"
-
-**Updating a record:** If the user wants to update the outcome or notes on an existing entry, update the relevant fields in the `interview_history` array and prompt them to save their profile.
-
-**Adding a new application without running full prep:** The user can say "add [Company] [Role] to my tracker" and Skill 04 will create a new history entry with the company, role, and stage populated, outcome left empty, and remind them to save their profile.
-
-**If interview_history is empty:** Tell the user their tracker is empty and offer two paths: run prep for a role they are currently pursuing, or manually add applications they are already tracking.
 
 ---
 

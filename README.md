@@ -1,8 +1,8 @@
 # Interview Ready: Claude Skill Package
 
-A five-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, and live EEOC-compliant mock interview sessions.
+A six-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, live EEOC-compliant mock interview sessions, and pipeline tracking.
 
-Works in Claude.ai (browser), Claude Desktop, and Claude Code. Gemini Gem port planned.
+Works in Claude.ai (browser), Claude Desktop, and Claude Code.
 
 ---
 
@@ -14,15 +14,16 @@ Every output is grounded in actual company research and your real background. Th
 
 ---
 
-## The Five Skills
+## The Six Skills
 
 | Skill | What It Does |
 |---|---|
 | `skill-01-interviewer` | Onboards the user. Builds the shared profile: background, strengths, weaknesses, job search status and motivation. The starting point for every other skill. |
 | `skill-02-resume-writer` | Accepts your resume via file upload or any document source. Rewrites or builds your resume and cover letter in professional, human language. Primary output is Word (.docx). |
 | `skill-03-job-search` | Matches your profile to industries and roles. Evaluates job descriptions you bring: individually or in bulk. Tells you whether to apply and how to position. |
-| `skill-04-interview-prep` | Prepares you for every stage of the hiring pipeline: recruiter screen, hiring manager, panel, final round, and offer negotiation. Research-grounded, role-specific, candidate-anchored prep documents. |
+| `skill-04-interview-prep` | Prepares you for every stage of the hiring pipeline: recruiter screen, hiring manager, panel, final round, and offer negotiation. Research-grounded, role-specific, candidate-anchored prep documents. Includes reference preparation, follow-up cadence, and resignation handling. |
 | `skill-05-mock-interviewer` | Runs a live, interactive mock interview session tailored to a specific job description and the candidate's real background. Three modes: standard practice, deep simulation, and quiz mode. Every answer graded against an EEOC-compliant standard. |
+| `skill-06-pipeline-dashboard` | Tracks your active job search pipeline. Shows where you stand across every application, flags what needs attention, and lets you update status, add new applications, and route to prep or practice without loading a full prep session. |
 
 ---
 
@@ -57,14 +58,14 @@ In Settings → Capabilities, make sure **Code Execution** is turned on. Skills 
 
 Each skill is a separate folder inside the ZIP you downloaded. You need to upload them one at a time.
 
-For each of the five skill folders (`skill-01-interviewer`, `skill-02-resume-writer`, `skill-03-job-search`, `skill-04-interview-prep`, `skill-05-mock-interviewer`):
+For each of the six skill folders (`skill-01-interviewer`, `skill-02-resume-writer`, `skill-03-job-search`, `skill-04-interview-prep`, `skill-05-mock-interviewer`, `skill-06-pipeline-dashboard`):
 
 1. Create a new ZIP file containing just that one skill folder
 2. Click **Upload skill** in the Skills settings panel
 3. Select the ZIP file and upload it
 4. Repeat for each skill
 
-Once all four are uploaded, Claude will use them automatically when you start a job search session.
+Once all six are uploaded, Claude will use them automatically when you start a job search session.
 
 **How to zip a single skill folder (no coding required):**
 - On Mac: right-click the skill folder → Compress
@@ -126,6 +127,7 @@ You can also go directly to any skill:
 | "Find jobs for me" / "Review this job description" | Skill 03: Job Search Expert |
 | "I have an interview" / "Prep me for my interview" | Skill 04: Interview Prep |
 | "Mock interview" / "Practice with me" / "Interview me" / "Quiz me on the role" | Skill 05: Mock Interviewer |
+| "Show me my pipeline" / "Where am I with my applications" / "Add this to my tracker" | Skill 06: Pipeline Dashboard |
 
 ---
 
@@ -189,7 +191,7 @@ If you are outside the United States, the skill runs a country and city-specific
 
 ## A Note on the Shared Profile Schema
 
-The user profile schema (`user-profile-schema.md`) is intentionally duplicated into the `references/` folder of each skill. This is required because each skill is installed as a separate zip file in Claude and cannot access files outside its own folder. When the schema changes, update all four copies. The `shared/` folder at the repo root is the source of truth , copy from there.
+The user profile schema (`user-profile-schema.md`) is intentionally duplicated into the `references/` folder of each skill. This is required because each skill is installed as a separate zip file in Claude and cannot access files outside its own folder. When the schema changes, update all six copies. The `shared/` folder at the repo root is the source of truth, copy from there.
 
 ---
 
@@ -212,7 +214,9 @@ Interview Ready is designed to be used across multiple sessions, not in one sitt
 | Skill 03: Single JD evaluation | 3,000 to 5,000 |
 | Skill 03: Bulk JD review (5 JDs) | 10,000 to 15,000 |
 | Skill 04: Single stage prep document | 8,000 to 12,000 |
-| Skill 04: Mock interview session | 4,000 to 8,000 |
+| Skill 05: Standard practice session | 4,000 to 8,000 |
+| Skill 05: Deep simulation session | 6,000 to 12,000 |
+| Skill 06: Pipeline dashboard and updates | 1,000 to 2,000 |
 
 **Full pipeline estimate:** A complete end-to-end run covering intake, resume, one JD evaluation, recruiter screen prep, hiring manager prep, and a mock interview session consumes roughly 35,000 to 55,000 tokens. Running this in one session is possible but not recommended.
 
