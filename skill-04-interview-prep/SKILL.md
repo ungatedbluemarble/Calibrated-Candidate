@@ -94,25 +94,79 @@ Do not rely on static knowledge for salary history and expectation laws. These c
 
 Step 1: Check `salary_law_cache` in the user profile.
 
-Step 2: If `last_searched` is empty (first use) or `next_refresh_due` is earlier than today's date, run a fresh web search.
+Step 2: If `last_searched` is empty (first use) or `next_refresh_due` is earlier than today's date, run a fresh search across the authoritative sources below. If the cache is current, use the stored result and skip the search.
 
-Step 3: Search query format: `"salary history ban law [user state] [user city if available] [current year]"`. Also search `"salary expectation ban [state]"` as a separate query , these are distinct protections.
+Step 3: Search in this sequence. Check each source in order and stop when a clear, current answer is found. If sources conflict, use the most recent government source as the tie-breaker.
 
-Step 4: Extract: whether a history ban exists, whether an expectation ban exists, what it covers, effective date, and any exceptions. Pull the source URL from an official government or established legal reference site. Never cite a blog or aggregator as the primary source.
+**Salary law authoritative sources (check in order):**
+
+1. State labor department official website: search "[state] department of labor salary history ban" to find the official state page
+2. National Conference of State Legislatures: ncsl.org tracks salary history ban legislation by state, updated regularly
+3. U.S. Department of Labor: dol.gov for federal wage and hour guidance and pay equity resources
+4. EEOC: eeoc.gov for pay equity and employment discrimination law guidance
+5. Ballotpedia: ballotpedia.org tracks recent legislative changes and ballot measures by state
+
+Run two queries per jurisdiction:
+- "salary history ban law [state] [city if available] [current year]"
+- "salary expectation ban [state] [current year]"
+
+These are distinct legal protections and must be checked separately.
+
+Step 4: Extract whether a history ban exists, whether an expectation ban exists, what it covers, effective date, any employer exceptions, and any penalties for non-compliance. Pull the source URL from the most authoritative result found. Never cite a blog, HR aggregator, or law firm marketing page as the primary source.
 
 Step 5: Write the result back to `salary_law_cache` with:
 - `last_searched`: today's date in ISO 8601
 - `next_refresh_due`: 90 days from today (one US fiscal quarter)
-- `source_url`: the primary source found
+- `source_url`: the primary government or legislative source found
 - `summary`: one to two sentence plain-language summary of what applies to this user
 
 Step 6: Surface the result in the prep document with a clear disclaimer:
 
-> "Based on a search conducted today, [summary of what applies in their jurisdiction]. Source: [source URL]. Laws change , verify current status with your state's Department of Labor before your interview: [state labor dept URL if found].
+> "Based on a search conducted today across state labor department records and NCSL legislation tracking, [summary of what applies in their jurisdiction]. Primary source: [source URL]. Laws change. Verify current status with your state Department of Labor before your interview: [state labor dept URL if found]."
 
 **If the search returns no clear result:** Tell the user the skill could not confirm their jurisdiction's status with confidence, direct them to their state labor department website, and include the general guidance below without making a specific legal claim.
 
-**If the user is outside the US:** Note that salary history laws vary significantly by country. Run a search for their country and city. If no reliable result is found, omit the jurisdiction-specific guidance and advise the user to research their local labor laws independently.
+**If the user is outside the US:** Note that salary history laws vary significantly by country. Search "salary history disclosure law [country] [city] [current year]" using the same source priority logic where possible. If no reliable official result is found, omit the jurisdiction-specific guidance and advise the user to research their local labor laws independently.
+
+**Compensation benchmarking: required for every offer negotiation prep and recommended for recruiter screen prep.**
+
+Do not rely on static knowledge for compensation ranges. Market rates shift, vary significantly by location and company stage, and differ by data source. Always run a live multi-source search before generating compensation guidance.
+
+**Compensation benchmarking sources (search all, then synthesize):**
+
+Search each of the following for the specific role title, level, and location. Use the exact job title from the job description, not a generic equivalent.
+
+1. Levels.fyi: strongest for verified, self-reported total compensation in technology roles. Search for the exact title and company if available.
+2. Glassdoor: broad cross-industry self-reported ranges. Note that Glassdoor data skews toward base salary and may undercount total comp.
+3. LinkedIn Salary: tied to real job postings and location-specific data. Useful for understanding what companies are actively paying.
+4. Payscale: detailed breakdown by years of experience, education level, and geography. Strong for non-technical roles.
+5. Bureau of Labor Statistics (bls.gov): authoritative US government occupational wage data. Use for SOC code-level benchmarks and to anchor the low end of the range.
+6. Dice: strongest for technology and engineering roles. Useful for software, data, and infrastructure positions.
+7. Built In: strong for startup and growth-stage company compensation. Covers equity and total comp packages at emerging tech companies.
+8. Indeed Salary: high volume, broad coverage across industries. Use as a cross-reference.
+
+**Synthesis instructions:**
+
+After searching all sources, produce a compensation summary with:
+
+- Base salary range: low, midpoint, and high based on cross-source data
+- Bonus range: typical percentage or flat amount for this role type and level
+- Equity range: if applicable, typical grant size and vesting terms for company stage
+- Total compensation range: base plus bonus plus annualized equity value
+- Geographic adjustment note: if the user's location differs from the primary data market (usually San Francisco or New York), flag the adjustment
+- Source agreement note: flag if sources diverge significantly and explain which source is most reliable for this specific role type
+- Confidence level: High (3 or more sources in agreement), Moderate (sources diverge), or Low (limited data available)
+
+**Present the benchmarking output in the prep document as:**
+
+> "Based on current market data across [sources checked], the compensation range for [role title] at [level] in [location] is:
+> Base salary: [low] to [high], midpoint [midpoint]
+> Total compensation (including typical bonus and equity): [low] to [high]
+> [Source agreement or divergence note]
+> [Geographic adjustment if applicable]
+> These figures are research aids, not guarantees. Verify against current postings and use your own judgment in negotiation."
+
+**Anchor guidance:** When the candidate must give a number, advise them to anchor at the 75th percentile of the range, not the midpoint. Candidates consistently underestimate what companies will pay for the right person.
 
 **Check state law first.** Many US states and cities prohibit employers from asking about salary history (what the candidate currently earns or has previously earned). This is different from asking about salary expectations (what the candidate wants). If the user is in a jurisdiction with salary history protections, note this in the prep document so they know they are not required to answer history questions.
 
