@@ -197,6 +197,45 @@ LinkedIn blocks automated content fetching. When this package researches a hirin
 
 ---
 
+## Managing Your Session
+
+Interview Ready is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.
+
+**Estimated token usage by stage:**
+
+| Stage | Estimated Tokens |
+|---|---|
+| Skill 01: Intake and profile build | 2,000 to 4,000 |
+| Skill 02: Resume rewrite and cover letter | 8,000 to 15,000 |
+| Skill 03: Single JD evaluation | 3,000 to 5,000 |
+| Skill 03: Bulk JD review (5 JDs) | 10,000 to 15,000 |
+| Skill 04: Single stage prep document | 8,000 to 12,000 |
+| Skill 04: Mock interview session | 4,000 to 8,000 |
+
+**Full pipeline estimate:** A complete end-to-end run covering intake, resume, one JD evaluation, recruiter screen prep, hiring manager prep, and a mock interview session consumes roughly 35,000 to 55,000 tokens. Running this in one session is possible but not recommended.
+
+**Recommended approach:**
+
+Run one skill per session. Save your profile at the end of every session by saying "save my profile." Upload the saved file at the start of the next session to pick up exactly where you left off.
+
+Suggested session breakdown:
+
+Session 1: Skill 01 intake and profile build. Save profile.
+
+Session 2: Skill 02 resume and cover letter. Save profile.
+
+Session 3: Skill 03 job search and JD evaluation for your top roles. Save profile.
+
+Session 4: Skill 04 recruiter screen prep for your priority role. Mock interview. Save profile.
+
+Session 5: Skill 04 hiring manager prep when the screen goes well. Save profile.
+
+Continue as needed through panel, final round, and offer negotiation.
+
+**If your session runs out of context:** Say "save my profile" immediately, start a new session, upload the profile file, and continue. The skill will pick up where you left off.
+
+---
+
 ## Troubleshooting
 
 **Skills are not triggering**
