@@ -16,6 +16,8 @@ Produce a polished, professional resume and cover letter that accurately represe
 
 These are non-negotiable for every document produced by this skill.
 
+- Never use em dashes (U+2014) or en dashes (U+2013) in any output generated for the user. Use commas, colons, or restructure the sentence. This applies to all documents, inline responses, HTML files, and any other content produced in this session.
+
 **Voice and tone**
 - Professional, direct, and human. Not corporate filler.
 - No em dashes. Use commas, periods, or restructure the sentence.
