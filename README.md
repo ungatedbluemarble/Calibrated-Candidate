@@ -178,12 +178,18 @@ The user profile built in Skill 01 carries forward into every other skill automa
 | Document | Skill | Format |
 |---|---|---|
 | Resume | Skill 02 | .docx (primary), PDF or plain text on request |
+| Resume Before and After | Skill 02 | .html (on request after rewrite) |
 | Cover Letter | Skill 02 | .docx (primary) |
 | Recruiter Screen Prep Guide | Skill 04 | .docx |
 | Hiring Manager Prep Guide | Skill 04 | .docx |
 | Panel Interview Prep Guide | Skill 04 | .docx |
 | Final Round Prep Guide | Skill 04 | .docx |
 | Offer Negotiation Guide | Skill 04 | .docx |
+| Compensation Analysis Report | Skill 04 | .html (on request after benchmarking) |
+| Reference Preparation Guide | Skill 04 | Inline guidance, reference list template |
+| Follow-Up Cadence Guide | Skill 04 | Inline guidance, email templates by stage |
+| Resignation Handling Guide | Skill 04 | Inline guidance, resignation letter template |
+| Pipeline Dashboard | Skill 06 | .html (on request, generated once per session) |
 
 ---
 
