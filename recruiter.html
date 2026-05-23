@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Ready: For Recruiters and Hiring Teams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg2: #eeeae2;
+    --bg3: #e4dfd5;
+    --text: #1a1814;
+    --text2: #4a4640;
+    --text3: #7a7570;
+    --accent: #1a4a2e;
+    --accent2: #2d7a4f;
+    --accent-light: #e8f5ee;
+    --border: #d4cfc6;
+    --header-bg: #1a1814;
+    --header-text: #f7f5f0;
+    --tag-bg: #1a4a2e;
+    --tag-text: #e8f5ee;
+    --card-bg: #ffffff;
+    --shadow: 0 2px 12px rgba(26,24,20,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,24,20,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12100e;
+      --bg2: #1c1a17;
+      --bg3: #252220;
+      --text: #f0ece4;
+      --text2: #b8b4ac;
+      --text3: #7a7570;
+      --accent: #4aab6d;
+      --accent2: #6dcc8f;
+      --accent-light: #0f2a1a;
+      --border: #2e2b27;
+      --header-bg: #0a0908;
+      --header-text: #f0ece4;
+      --tag-bg: #0f2a1a;
+      --tag-text: #4aab6d;
+      --card-bg: #1c1a17;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(74,171,109,0.03) 40px, rgba(74,171,109,0.03) 41px);
+  }
+  .header-tag {
+    display: inline-block;
+    background: var(--accent2);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); color: var(--header-text); line-height: 1.1; margin-bottom: 1.25rem; position: relative; }
+  h1 em { font-style: italic; color: var(--accent2); }
+  .header-sub { font-size: 1.15rem; color: rgba(240,236,228,0.7); max-width: 600px; margin: 0 auto 2.5rem; font-weight: 300; }
+  .header-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 300; }
+  .btn { display: inline-block; padding: 0.75rem 1.75rem; border-radius: 3px; font-size: 0.9rem; font-weight: 500; text-decoration: none; letter-spacing: 0.02em; transition: all 0.15s; }
+  .btn-primary { background: var(--accent2); color: #fff; border: 2px solid var(--accent2); }
+  .btn-primary:hover { background: transparent; color: var(--accent2); }
+  .btn-secondary { background: transparent; color: var(--header-text); border: 2px solid rgba(240,236,228,0.3); }
+  .btn-secondary:hover { border-color: var(--header-text); }
+
+  nav { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; overflow-x: auto; }
+  nav ul { display: flex; list-style: none; gap: 0; max-width: 1200px; margin: 0 auto; white-space: nowrap; }
+  nav a { display: block; padding: 1rem 1.25rem; font-size: 0.85rem; font-weight: 500; color: var(--text2); text-decoration: none; border-bottom: 2px solid transparent; transition: all 0.15s; }
+  nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  main { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+  section { margin-bottom: 4rem; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--text); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); scroll-margin-top: 60px; }
+  h3 { font-size: 1.05rem; font-weight: 500; color: var(--text); margin: 1.75rem 0 0.75rem; }
+  p { color: var(--text2); margin-bottom: 1rem; }
+  .lead { font-size: 1.1rem; color: var(--text); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .benefit-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .benefit-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent2); }
+  .benefit-title { font-weight: 500; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+  .benefit-desc { font-size: 0.9rem; color: var(--text2); margin: 0; }
+
+  .callout { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+  .callout-future { background: var(--accent-light); border-color: var(--accent2); }
+
+  .share-block { text-align: center; padding: 3rem 2rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow); margin-top: 1.5rem; }
+  .share-block h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 0.75rem; margin-top: 0; }
+  .share-block p { max-width: 540px; margin: 0 auto 1.5rem; }
+
+  footer { background: var(--header-bg); color: rgba(240,236,228,0.5); text-align: center; padding: 2.5rem; font-size: 0.85rem; }
+  footer a { color: var(--accent2); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    header { padding: 3rem 1.5rem 2.5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    .benefit-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">For Recruiters and Hiring Teams</div>
+  <h1>Better Candidates.<br><em>Faster Decisions.</em></h1>
+  <p class="header-sub">When candidates arrive prepared, everyone's time is used better. Interview Ready is free for any job seeker. Share it and feel the difference.</p>
+  <div class="header-btns">
+    <a href="https://github.com/ungatedbluemarble/interview-ready" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+    <a href="job-seeker.html" class="btn btn-secondary">See the job seeker view</a>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#the-problem">The problem</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#what-candidates-get">What candidates get</a></li>
+    <li><a href="#share">Share it</a></li>
+    <li><a href="#coming-next">Coming next</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="the-problem">
+    <h2>The Problem With Unprepared Candidates</h2>
+    <p class="lead">Most candidates want to do well. The problem is not capability. It is access. Generic interview advice, expensive coaching, and scattered preparation produce candidates who arrive uncertain, vague, and hard to evaluate.</p>
+    <p>That costs you time. Unclear answers require follow-up. Misaligned expectations require correction. Candidates who cannot articulate their experience clearly force interviewers to do work that the candidate should have done before the call.</p>
+    <p>The result is longer hiring cycles, weaker signal, and more rounds than the role actually requires.</p>
+  </section>
+
+  <section id="benefits">
+    <h2>What Changes When Candidates Use Interview Ready</h2>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-title">Candidates arrive informed</div>
+        <div class="benefit-desc">Interview Ready grounds preparation in real company research and the actual job description. Candidates know what the role requires, what the company values, and what questions to expect before the conversation starts.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">Stronger conversations, less clarification</div>
+        <div class="benefit-desc">Prepared candidates give specific, evidence-based answers. Interviewers spend less time asking follow-up questions to extract basic information and more time evaluating real fit and capability.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">Faster screening cycles</div>
+        <div class="benefit-desc">When candidates communicate clearly in the first conversation, you need fewer rounds to reach a confident decision. Preparation compresses the timeline without cutting corners on evaluation quality.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">Better signal from the process</div>
+        <div class="benefit-desc">A prepared candidate who is not the right fit is easier to identify early. A prepared candidate who is the right fit is easier to move forward with confidence. Either way, the hiring signal is cleaner.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">Reflects well on your organization</div>
+        <div class="benefit-desc">Candidates who feel supported during the process form a better impression of the hiring team and the company, regardless of the outcome. That reputation matters for future talent pipelines.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-title">No cost to your team</div>
+        <div class="benefit-desc">Interview Ready is free and open source. There is nothing to procure, nothing to integrate, and no vendor relationship to manage. Share the link and the candidates do the rest.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="what-candidates-get">
+    <h2>What a Prepared Candidate Looks Like</h2>
+    <p class="lead">Interview Ready takes candidates through the full hiring pipeline, not just one stage.</p>
+    <p>It builds a resume grounded in their actual experience and the specific role. It evaluates job descriptions and tells them whether and how to position for the opportunity. It generates stage-specific prep documents for every conversation from recruiter screen through final round, grounded in real company research and live compensation data. It runs mock interview sessions and grades their answers. It tracks their pipeline and checks their inbox for recruiter responses. And it prepares them to negotiate their offer from fact rather than guesswork.</p>
+    <p>The candidate who goes through that workflow is a materially different interviewer than one who read a list of common questions the night before.</p>
+    <div class="callout">
+      <strong>Works with what you already send.</strong> If you share a job description link with a candidate, they can feed it directly into Interview Ready and receive preparation specific to that exact role. No extra work on your end.
+    </div>
+  </section>
+
+  <section id="share">
+    <h2>Share It</h2>
+    <div class="share-block">
+      <h3>Send it to your candidates</h3>
+      <p>Interview Ready is free for any job seeker. The fastest way to benefit from it is to share it with candidates you are actively working with. The link takes them directly to the job seeker page.</p>
+      <a href="job-seeker.html" class="btn btn-primary">Share the job seeker page</a>
+    </div>
+  </section>
+
+  <section id="coming-next">
+    <h2>Coming Next</h2>
+    <div class="callout callout-future">
+      <strong>Built for candidates today. Built for hiring teams tomorrow.</strong>
+      <p style="margin-top:0.75rem;margin-bottom:0">A version of Interview Ready built specifically for recruiting teams and hiring workflows is in development. It will bring the same preparation intelligence to the employer side of the table: structured interview frameworks, candidate evaluation support, and pipeline intelligence built on the same methodology. Follow <a href="https://github.com/ungatedbluemarble" target="_blank" rel="noopener" style="color:var(--accent2)">@ungatedbluemarble on GitHub</a> for updates.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Interview Ready is open source under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. Free for personal use. Built by <a href="https://github.com/ungatedbluemarble" target="_blank" rel="noopener">@ungatedbluemarble</a>.</p>
+</footer>
+
+</body>
+</html>
