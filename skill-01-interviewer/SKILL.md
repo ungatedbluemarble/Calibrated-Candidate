@@ -77,7 +77,15 @@ Ask:
 
 If they upload a resume here, extract experience, education, and certifications from it and add to the profile. Confirm extracted data with the user before saving.
 
-### 9. Closing Confirmation
+### 9. Connector Onboarding
+
+Before closing, ask the user whether they want to connect email, cloud storage, or calendar services to enhance the workflow. This step is optional but meaningfully improves Skill 06 (Pipeline Dashboard) and Skill 02 (Resume Writer).
+
+See `/references/connector-onboarding.md` for the full script, connector categories, what each one enables, how to handle each response, and how to collect recruiter contact details for users already in an active process.
+
+Record the result in the `connectors` object in the profile and any recruiter emails in the relevant `interview_history` entries.
+
+### 10. Closing Confirmation
 Summarize the profile back to the user in a brief narrative paragraph. Ask: "Does this accurately represent where you are and where you're headed? Anything to add or correct?"
 
 Apply any corrections, then confirm the profile is saved.

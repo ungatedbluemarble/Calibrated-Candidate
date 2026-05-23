@@ -412,7 +412,7 @@
 <header>
   <div class="header-tag">Open Source Claude Skill Package, 6 Skills</div>
   <h1>Interview <em>Ready</em></h1>
-  <p class="header-sub">A free, five-skill career preparation system built for anyone, no consultant, no paywall, no prior experience required.</p>
+  <p class="header-sub">A free, six-skill career preparation system built for anyone, no consultant, no paywall, no prior experience required.</p>
   <div class="header-btns">
     <a href="https://github.com/ungatedbluemarble/interview-ready" class="btn btn-primary" target="_blank" rel="noopener">Get it on GitHub</a>
     <a href="#installation" class="btn btn-secondary">How to install</a>
@@ -428,6 +428,7 @@
     <li><a href="#documents">Outputs</a></li>
     <li><a href="#session">Sessions</a></li>
     <li><a href="#intelligence">Intelligence</a></li>
+    <li><a href="#connectors">Connectors</a></li>
     <li><a href="#companion">Tools</a></li>
     <li><a href="#contributing">Contribute</a></li>
     <li><a href="#license">License</a></li>
@@ -447,12 +448,12 @@
   </section>
 
   <section id="skills">
-    <h2>The Five Skills</h2>
+    <h2>The Six Skills</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-num">SKILL 01</div>
         <div class="skill-name">Interviewer</div>
-        <p class="skill-desc">Onboards the user. Builds the shared profile: background, strengths, weaknesses, job search status and motivation. The starting point for every other skill.</p>
+        <p class="skill-desc">Onboards the user. Builds the shared profile: background, strengths, weaknesses, job search status and motivation. Asks about connected email, cloud storage, and calendar services so downstream skills can check inbox responses and pull documents automatically. The starting point for every other skill.</p>
       </div>
       <div class="skill-card">
         <div class="skill-num">SKILL 02</div>
@@ -477,7 +478,7 @@
       <div class="skill-card">
         <div class="skill-num">SKILL 06</div>
         <div class="skill-name">Pipeline Dashboard</div>
-        <p class="skill-desc">Tracks your active job search pipeline across every company and stage. Shows what needs attention, lets you update application status, add new roles, and route directly to prep or practice without loading a full prep session.</p>
+        <p class="skill-desc">Tracks your active job search pipeline across every company and stage. If your email is connected and recruiter contacts are stored, checks your inbox for responses before rendering the dashboard so status reflects what actually happened. Shows what needs attention and routes directly to prep or practice.</p>
       </div>
     </div>
   </section>
@@ -675,6 +676,23 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     <div class="callout callout-warn">
       <strong>Disclaimer:</strong> Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
     </div>
+  </section>
+
+  <section id="connectors">
+    <h2>Connected Services</h2>
+    <p class="lead">Interview Ready can connect to your email, cloud storage, and calendar through Claude's connected apps. These are optional: everything works without them. During onboarding, Skill 01 asks whether you want to enable any of the following.</p>
+    <table>
+      <thead><tr><th>Service</th><th>What it enables</th></tr></thead>
+      <tbody>
+        <tr><td>Gmail or Microsoft Outlook</td><td>Skill 06 checks your inbox for recruiter responses before rendering your pipeline dashboard. Status reflects what actually happened, not just what you manually logged.</td></tr>
+        <tr><td>Google Drive, OneDrive, SharePoint, Dropbox, Box</td><td>Skills 02 and 03 can pull your resume or job descriptions directly from storage without requiring a file upload each time.</td></tr>
+        <tr><td>Google Calendar or Outlook Calendar</td><td>Skill 06 reads scheduled interview dates from your calendar and surfaces them in the pipeline view automatically.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <p><strong>Recruiter email addresses</strong> are what make inbox checking work. When you run prep for any role (Skill 04), you will be prompted to share the recruiter's email if you have it. Once stored in your profile, Skill 06 uses it to find the right thread when checking your pipeline status.</p>
+    </div>
+    <p>To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Interview Ready session.</p>
   </section>
 
   <section id="companion">

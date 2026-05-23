@@ -15,10 +15,39 @@ Give the user a clear, current view of their job search pipeline and enable them
 ## Behavior Rules
 
 - Always read interview_history before presenting any output. Never guess at status from context alone.
+- If email connector is enabled, run an inbox check before rendering the dashboard. See Inbox Check below.
 - Present a clean table first, narrative second. Do not lead with prose.
 - Surface what needs attention without being alarmist. Flag stale entries and upcoming interviews. Do not editorialize on closed entries.
 - Every update to interview_history must be followed by a profile save prompt. Changes not saved are lost when the session ends.
 - Route to Skill 04 when the user wants to prep. Route to Skill 05 when the user wants to practice. Do not attempt prep or mock interview logic inside this skill.
+
+---
+
+## Inbox Check
+
+Before rendering the dashboard, check whether the email connector is enabled in the profile:
+
+```
+connectors.email.connected === true
+```
+
+If yes, and if any `interview_history` entry has a non-empty `recruiter_email` field, search the connected inbox for emails from that address. For each entry with a recruiter email:
+
+Step 1: Search for the most recent email thread from `recruiter_email` related to the role. Use the company name and role title as search context.
+
+Step 2: Read the most recent message in the thread. Determine whether it represents a response from the recruiter (a reply, a scheduling request, a rejection, an offer, or any substantive message).
+
+Step 3: Compare the thread status to the current `outcome` field in the profile entry.
+
+Step 4: If the inbox shows activity that is more recent than what the profile reflects, surface it in the attention section of the dashboard rather than silently updating the record. Let the user confirm before writing any change to the profile:
+
+> "I found a response from [Recruiter Name] at [Company] sent [date]. It looks like [plain language summary of what the message says]. Do you want me to update your pipeline status for this role?"
+
+Step 5: If the user confirms, update the `outcome` field in the `interview_history` entry and prompt them to save their profile.
+
+**If the inbox check finds nothing new:** Proceed to render the dashboard as normal. Do not mention the check to the user unless it surfaced something relevant.
+
+**If the email connector is not enabled or no recruiter emails are stored:** Skip the inbox check silently and render the dashboard from profile data alone. Do not prompt the user to connect email during this session: that conversation belongs in Skill 01 onboarding.
 
 ---
 
@@ -116,6 +145,7 @@ When the user wants to update an existing entry:
 - stage
 - interview_date
 - interviewer_name
+- recruiter_email
 - outcome
 - notes
 

@@ -6,12 +6,6 @@ Works in Claude.ai (browser), Claude Desktop, and Claude Code.
 
 ---
 
-## Disclaimer
-
-Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
-
----
-
 ## What This Is
 
 Interview Ready is a structured, research-grounded career preparation system built as Claude skills. Each skill is autonomous but context-aware: they share a user profile so you are never asked the same question twice across the workflow.
@@ -24,12 +18,12 @@ Every output is grounded in actual company research and your real background. Th
 
 | Skill | What It Does |
 |---|---|
-| `skill-01-interviewer` | Onboards the user. Builds the shared profile: background, strengths, weaknesses, job search status and motivation. The starting point for every other skill. |
+| `skill-01-interviewer` | Onboards the user. Builds the shared profile: background, strengths, weaknesses, job search status and motivation. Asks about connected email, storage, and calendar services so downstream skills can read inbox responses and pull documents automatically. The starting point for every other skill. |
 | `skill-02-resume-writer` | Accepts your resume via file upload or any document source. Rewrites or builds your resume and cover letter in professional, human language. Primary output is Word (.docx). |
 | `skill-03-job-search` | Matches your profile to industries and roles. Evaluates job descriptions you bring: individually or in bulk. Tells you whether to apply and how to position. |
 | `skill-04-interview-prep` | Prepares you for every stage of the hiring pipeline: recruiter screen, hiring manager, panel, final round, and offer negotiation. Research-grounded, role-specific, candidate-anchored prep documents. Includes reference preparation, follow-up cadence, and resignation handling. |
 | `skill-05-mock-interviewer` | Runs a live, interactive mock interview session tailored to a specific job description and the candidate's real background. Three modes: standard practice, deep simulation, and quiz mode. Every answer graded against an EEOC-compliant standard. |
-| `skill-06-pipeline-dashboard` | Tracks your active job search pipeline. Shows where you stand across every application, flags what needs attention, and lets you update status, add new applications, and route to prep or practice without loading a full prep session. |
+| `skill-06-pipeline-dashboard` | Tracks your active job search pipeline. If your email is connected and recruiter contacts are stored, checks your inbox for responses before rendering the dashboard so status reflects what actually happened, not just what you manually logged. Flags what needs attention and routes to prep or practice without loading a full prep session. |
 
 ---
 
@@ -137,7 +131,23 @@ You can also go directly to any skill:
 
 ---
 
-## Bringing In Your Documents
+## Connected Services (Optional)
+
+Interview Ready can connect to your email, cloud storage, and calendar through Claude's connected apps to make the workflow significantly more useful. These are optional: everything works without them.
+
+During onboarding (Skill 01), you will be asked whether you want to enable any of the following:
+
+| Service | What it enables |
+|---|---|
+| Gmail or Microsoft Outlook | Skill 06 checks your inbox for recruiter responses before showing your pipeline. Status reflects what actually happened, not just what you manually logged. |
+| Google Drive, OneDrive, SharePoint, Dropbox, Box | Skill 02 and Skill 03 can pull your resume or job descriptions directly from storage without requiring a file upload each time. |
+| Google Calendar or Outlook Calendar | Skill 06 can read scheduled interview dates from your calendar and surface them in the pipeline view automatically. |
+
+To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Interview Ready session. You can add connectors at any time: if you connect email after your initial onboarding, tell Skill 01 during your next session and it will update your profile.
+
+**Recruiter email addresses** are the key to inbox checking. When you run prep for any role (Skill 04), you will be prompted to share the recruiter's email if you have it. Once stored in your profile, Skill 06 uses it to find the right email thread when checking your pipeline status.
+
+---
 
 You can feed your resume and other career documents to this package from any source:
 
@@ -174,6 +184,12 @@ The user profile built in Skill 01 carries forward into every other skill automa
 | Panel Interview Prep Guide | Skill 04 | .docx |
 | Final Round Prep Guide | Skill 04 | .docx |
 | Offer Negotiation Guide | Skill 04 | .docx |
+
+---
+
+## Disclaimer
+
+Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
 
 ---
 

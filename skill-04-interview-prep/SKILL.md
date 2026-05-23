@@ -309,6 +309,7 @@ After each prep session, add an entry to the user profile's `interview_history` 
   "stage": "",
   "interview_date": "",
   "interviewer_name": "",
+  "recruiter_email": "",
   "prep_document_generated": true,
   "outcome": "",
   "notes": ""
@@ -316,6 +317,12 @@ After each prep session, add an entry to the user profile's `interview_history` 
 ```
 
 This allows the skill to track where the user is in multiple active pipelines and avoid duplication across sessions.
+
+**Recruiter email collection:** When generating any stage prep document, ask the user for the recruiter's email address if it is not already in the profile entry for this role. Frame it as follows:
+
+> "Do you have the recruiter's email address for this role? If you share it, I can check your inbox for any responses when you view your pipeline status."
+
+If they provide it, write it to `recruiter_email` in the corresponding `interview_history` entry and prompt them to save their profile. If they do not have it yet, leave the field empty. Do not block prep document generation on this: it is supplementary context, not a requirement.
 
 ---
 

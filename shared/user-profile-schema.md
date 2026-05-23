@@ -87,7 +87,35 @@ This schema defines the canonical user profile object built by Skill 01 and cons
     "cover_letter_on_file": false
   },
 
-  "interview_history": []
+  "connectors": {
+    "email": {
+      "connected": false,
+      "provider": ""
+    },
+    "storage": {
+      "connected": false,
+      "providers": []
+    },
+    "calendar": {
+      "connected": false,
+      "provider": ""
+    },
+    "other": ""
+  },
+
+  "interview_history": [
+    {
+      "company": "",
+      "role": "",
+      "stage": "",
+      "interview_date": "",
+      "interviewer_name": "",
+      "recruiter_email": "",
+      "prep_document_generated": false,
+      "outcome": "",
+      "notes": ""
+    }
+  ]
 }
 ```
 
@@ -120,7 +148,8 @@ On subsequent sessions, the user uploads or references this file and any skill c
 | experience, education, certifications | Skill 01 (interview) or Skill 02 (resume parse) |
 | salary_law_cache | Skill 04: Interview Prep (auto-updated on first use and each US fiscal quarter) |
 | documents | Skill 02: Resume Writer |
-| interview_history | Skill 04: Interview Prep and Skill 05: Mock Interviewer |
+| interview_history (including recruiter_email) | Skill 04: Interview Prep (also collected by Skill 01 during connector onboarding for active processes) |
+| connectors | Skill 01: Interviewer (connector onboarding step) |
 
 ---
 
@@ -133,7 +162,10 @@ Needs: `identity`, `background`, `experience`, `education`, `certifications`, `d
 Needs: `background`, `strengths`, `weaknesses`, `search_status`, `experience` (titles and domains only)
 
 **Skill 04: Interview Prep**
-Needs: `identity`, `background`, `experience`, `strengths`, `weaknesses`, `search_status.target_roles`, `interview_history`, `salary_law_cache`
+Needs: `identity`, `background`, `experience`, `strengths`, `weaknesses`, `search_status.target_roles`, `interview_history`, `salary_law_cache`, `connectors.email`
 
 **Skill 05: Mock Interviewer**
 Needs: `identity`, `background`, `experience`, `strengths`, `weaknesses`, `search_status.target_roles`, `interview_history`
+
+**Skill 06: Pipeline Dashboard**
+Needs: `interview_history`, `connectors`
