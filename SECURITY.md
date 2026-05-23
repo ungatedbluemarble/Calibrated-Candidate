@@ -8,9 +8,20 @@ That said, security matters here for specific reasons. This package handles sens
 
 ---
 
+## A Note on AI-Generated Content
+
+This package generates career guidance using Claude. The output quality depends on the quality of the skill instructions and the information the user provides. No AI-generated guidance should be treated as legal, financial, or professional advice without independent verification. The disclaimer in the README applies to all outputs from this package.
+
+---
+
 ## Supported Versions
 
-Security issues are addressed in the current version on the `main` branch only. We do not maintain security patches for older versions.
+This package does not use semantic versioning. The current state of the `main` branch is the only supported version. Security issues are addressed there only.
+
+| Version | Supported |
+|---|---|
+| main (current) | Yes |
+| Any prior commit | No |
 
 ---
 
@@ -66,6 +77,4 @@ Security reports will be acknowledged within 7 days. Resolution timeline depends
 
 ---
 
-## A Note on AI-Generated Content
 
-This package generates career guidance using Claude. The output quality depends on the quality of the skill instructions and the information the user provides. No AI-generated guidance should be treated as legal, financial, or professional advice without independent verification. The disclaimer in the README applies to all outputs from this package.
