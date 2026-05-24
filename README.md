@@ -1,5 +1,7 @@
 # Interview Ready: Claude Skill Package
 
+Every other tool gives you a service and costs money. Interview Ready gives you a system that knows you, researches for you, and works across your entire job search from first resume to signed offer.
+
 A six-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, live EEOC-compliant mock interview sessions, and pipeline tracking.
 
 Works in Claude.ai (browser), Claude Desktop, and Claude Code.
