@@ -161,6 +161,26 @@ The skills do not require any specific cloud service. Whatever document source y
 
 ---
 
+## Pipeline Dashboard
+
+Interview Ready includes a purpose-built pipeline dashboard through the `skill-06-pipeline-dashboard` skill. You do not need an external tracker.
+
+The dashboard surfaces your full job search in one view: active applications by stage, what needs attention and why, upcoming interview dates, offers pending, and last recruiter contact for each role. It flags urgency automatically. If a final round is in two days with no prep completed, it surfaces that. If a hiring manager interview went quiet nine days ago, it flags it for follow-up. If an offer is pending, it prompts you to run negotiation prep before responding.
+
+If your email is connected, the dashboard checks your inbox before rendering so the status of every application reflects what actually happened, not just what you manually logged.
+
+To open the dashboard, say:
+
+> "Show me my pipeline."
+
+or
+
+> "Where am I with my applications."
+
+To update a specific application, say what changed and the dashboard refreshes that entry. Say "save my profile" after any update to keep the pipeline current across sessions.
+
+---
+
 ## How Context Works
 
 The user profile built in the Interviewer skill carries forward into every other skill automatically. Skills pull only the slice of context they need: you are never re-asked for information you already provided.
@@ -296,32 +316,6 @@ Full license: https://creativecommons.org/licenses/by-nc/4.0/
 *Built by @ungatedbluemarble. Interview Ready was built from a real workflow and open-sourced because the problem is universal.*
 
 ---
-
-## Companion Tools
-
-Interview Ready handles research, documents, and interview preparation. It does not replace a dedicated application tracker. If you are managing more than three active pipelines at once, a visual tracker alongside this package will help you stay organized.
-
-**Application tracking**
-
-These tools are purpose-built for tracking job applications, pipeline stages, contacts, and follow-up dates. All are free to start and require no technical setup.
-
-| Tool | Best For | URL |
-|---|---|---|
-| Huntr | Dedicated job search tracker with Kanban board, contact management, and resume storage | huntr.com |
-| Teal | Job tracker with built-in resume builder and job description analysis | tealhq.com |
-| Notion | Flexible tracker if you prefer to build your own board with custom fields | notion.so |
-| Airtable | Spreadsheet-style tracker with filtering and views, good for high-volume searches | airtable.com |
-| Google Sheets | No-frills option if you want full control and nothing else | sheets.google.com |
-
-None of these are affiliated with or required by this package. They are listed because they solve a problem this package intentionally does not: visual pipeline management across many concurrent applications.
-
-**Using your Interview Ready profile as the source of truth**
-
-Your exported `interview_ready_profile.json` contains an `interview_history` field that tracks every company, role, pipeline stage, and prep session you have run. You can ask Claude at any point:
-
-> "Show me the status of all my active applications."
-
-Claude will read your profile and summarize where you stand across every pipeline you are tracking. This works best when you save your profile after each session so the history stays current.
 
 **Compensation research**
 
