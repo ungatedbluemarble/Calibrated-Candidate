@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Ready - Market Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg2: #eeeae2;
+    --bg3: #e4dfd5;
+    --text: #1a1814;
+    --text2: #4a4640;
+    --text3: #7a7570;
+    --accent: #1a4a2e;
+    --accent2: #2d7a4f;
+    --accent-light: #e8f5ee;
+    --border: #d4cfc6;
+    --header-bg: #1a1814;
+    --header-text: #f7f5f0;
+    --card-bg: #ffffff;
+    --shadow: 0 2px 12px rgba(26,24,20,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,24,20,0.12);
+    --dot-full: #2d7a4f;
+    --dot-partial: #c47f00;
+    --dot-none: #d4cfc6;
+    --ir-row-bg: #e8f5ee;
+    --ir-row-border: #b8dfc8;
+    --paid-color: #b83232;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12100e;
+      --bg2: #1c1a17;
+      --bg3: #252220;
+      --text: #f0ece4;
+      --text2: #b8b4ac;
+      --text3: #7a7570;
+      --accent: #4aab6d;
+      --accent2: #6dcc8f;
+      --accent-light: #0f2a1a;
+      --border: #2e2b27;
+      --header-bg: #0a0908;
+      --header-text: #f0ece4;
+      --card-bg: #1c1a17;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+      --dot-full: #4aab6d;
+      --dot-partial: #f0a500;
+      --dot-none: #2e2b27;
+      --ir-row-bg: #0f2a1a;
+      --ir-row-border: #1a4a2e;
+      --paid-color: #e05555;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(74,171,109,0.03) 40px, rgba(74,171,109,0.03) 41px);
+  }
+  .header-tag {
+    display: inline-block;
+    background: var(--accent2);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--header-text);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  h1 em { font-style: italic; color: var(--accent2); }
+  .header-sub {
+    font-size: 1rem;
+    color: rgba(240,236,228,0.65);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+
+  .cost-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 0.5rem;
+  }
+  .cost-item { text-align: center; }
+  .cost-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .cost-amount.paid { color: var(--paid-color); }
+  .cost-amount.ir { color: var(--accent2); }
+  .cost-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(240,236,228,0.5);
+    letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+  .vs {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: rgba(240,236,228,0.3);
+    letter-spacing: 0.15em;
+  }
+
+  main { max-width: 1040px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--text3);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comparison-wrap { margin-bottom: 3rem; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    min-width: 680px;
+  }
+
+  thead tr { background: var(--bg2); }
+  thead th {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--text3);
+    text-transform: uppercase;
+    padding: 14px 10px;
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th.service-col {
+    text-align: left;
+    padding-left: 20px;
+    width: 210px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover:not(.ir-row) { background: var(--bg); }
+  tbody tr.ir-row {
+    background: var(--ir-row-bg);
+    border-top: 1px solid var(--ir-row-border);
+    border-bottom: 1px solid var(--ir-row-border);
+  }
+
+  .service-cell { padding: 16px 20px; text-align: left; }
+  .service-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .ir-row .service-name { color: var(--accent); font-weight: 600; }
+  .service-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+  .ir-row .service-price { color: var(--accent2); }
+
+  .dot-cell { text-align: center; padding: 16px 10px; vertical-align: middle; }
+  .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; }
+  .dot.full { background: var(--dot-full); }
+  .dot.partial { background: var(--dot-partial); }
+  .dot.none { background: var(--dot-none); }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin: 1rem 0 2.5rem;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+
+  .breakdown-wrap { margin-bottom: 3rem; }
+  .breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .breakdown-table tr { border-bottom: 1px solid var(--border); }
+  .breakdown-table tr:last-child { border-bottom: none; }
+  .breakdown-table td {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: var(--text2);
+  }
+  .breakdown-table td:last-child {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text3);
+    white-space: nowrap;
+  }
+  .breakdown-table tr.total-row { background: var(--bg2); }
+  .breakdown-table tr.total-row td { font-weight: 500; font-size: 14px; color: var(--text); }
+  .breakdown-table tr.total-row td:last-child { color: var(--paid-color); font-size: 13px; }
+  .breakdown-table tr.ir-total-row { background: var(--ir-row-bg); border-top: 1px solid var(--ir-row-border); }
+  .breakdown-table tr.ir-total-row td { font-weight: 600; font-size: 15px; color: var(--accent); }
+  .breakdown-table tr.ir-total-row td:last-child { color: var(--accent2); font-size: 15px; }
+
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+    margin-top: 2.5rem;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header { padding: 3rem 1.5rem 2.5rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    .cost-hero { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">Market Comparison</div>
+  <h1>Interview <em>Ready</em></h1>
+  <p class="header-sub">What it costs to replicate this with paid services versus one month of Claude Pro.</p>
+  <div class="cost-hero">
+    <div class="cost-item">
+      <div class="cost-amount paid">$532+</div>
+      <div class="cost-label">paid services stack</div>
+    </div>
+    <div class="vs">vs</div>
+    <div class="cost-item">
+      <div class="cost-amount ir">$20</div>
+      <div class="cost-label">Claude Pro (one month)</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <a class="back-link" href="index.html">&larr; Back to Interview Ready</a>
+
+  <div class="comparison-wrap">
+    <div class="section-label">What each service covers</div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="service-col">Service</th>
+            <th>Profile</th>
+            <th>Resume</th>
+            <th>Job Match</th>
+            <th>Interview Prep</th>
+            <th>Mock Interview</th>
+            <th>Offer Negotiation</th>
+            <th>Pipeline Tracking</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">TopResume</span>
+              <span class="service-price">$149 to $349</span>
+            </td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">Prepfully</span>
+              <span class="service-price">$150 to $300 per session</span>
+            </td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">Big Interview</span>
+              <span class="service-price">$39 per month</span>
+            </td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">Teal (paid)</span>
+              <span class="service-price">$29 per month</span>
+            </td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">Career Contessa</span>
+              <span class="service-price">$200+ per session</span>
+            </td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">LinkedIn Premium Career</span>
+              <span class="service-price">$14.99 per month (billed annually)</span>
+            </td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot partial"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr>
+            <td class="service-cell">
+              <span class="service-name">Jobscan</span>
+              <span class="service-price">$49 per month</span>
+            </td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+            <td class="dot-cell"><span class="dot none"></span></td>
+          </tr>
+          <tr class="ir-row">
+            <td class="service-cell">
+              <span class="service-name">Interview Ready</span>
+              <span class="service-price">$20 per month Claude Pro</span>
+            </td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+            <td class="dot-cell"><span class="dot full"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot full"></span> Full coverage</div>
+    <div class="legend-item"><span class="dot partial"></span> Partial coverage</div>
+    <div class="legend-item"><span class="dot none"></span> Not covered</div>
+  </div>
+
+  <div class="breakdown-wrap">
+    <div class="section-label">Cost to replicate Interview Ready with paid services</div>
+    <table class="breakdown-table">
+      <tbody>
+        <tr>
+          <td>TopResume (resume and cover letter)</td>
+          <td>$149 to $349</td>
+        </tr>
+        <tr>
+          <td>Prepfully (2 prep sessions)</td>
+          <td>$300 to $600</td>
+        </tr>
+        <tr>
+          <td>Big Interview (1 month mock practice)</td>
+          <td>$39</td>
+        </tr>
+        <tr>
+          <td>Teal paid (pipeline tracking, 1 month)</td>
+          <td>$29</td>
+        </tr>
+        <tr>
+          <td>LinkedIn Premium Career (1 month job matching, billed annually)</td>
+          <td>$14.99</td>
+        </tr>
+        <tr class="total-row">
+          <td>Comparable paid stack (one job search cycle)</td>
+          <td>$532 to $1,032</td>
+        </tr>
+        <tr class="ir-total-row">
+          <td>Interview Ready (one month Claude Pro)</td>
+          <td>$20</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-note">
+    Pricing reflects publicly available rates as of May 2026. Review quarterly.<br>
+    Verify current Claude Pro pricing at claude.ai before publishing or sharing this comparison.
+  </div>
+</main>
+
+</body>
+</html>
