@@ -4,7 +4,13 @@ Every other tool gives you a service and costs money. Interview Ready gives you 
 
 A six-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, live EEOC-compliant mock interview sessions, and pipeline tracking.
 
-Works in Claude.ai (browser), Claude Desktop, and Claude Code.
+Works in Claude.ai (browser), Claude Desktop, and Claude Code. Interview Ready is always free.
+
+---
+
+## User Guide
+
+New to Interview Ready? The [User Guide](https://github.com/ungatedbluemarble/interview-ready/blob/main/InterviewReady_UserGuide_2026.pdf) covers both Claude free and Pro plan users and walks you through every skill session by session, from your first profile build through offer negotiation. No technical knowledge required.
 
 ---
 
@@ -31,8 +37,8 @@ Every output is grounded in actual company research and your real background. Th
 
 ## Requirements
 
-- Claude.ai account (Pro, Max, Team, or Enterprise) or Claude Code
-- Code Execution enabled: Settings → Capabilities → Code Execution (required for skills to load)
+- Claude.ai account (free plan or paid) or Claude Code
+- Code Execution enabled: Settings > Capabilities > Code Execution (required for skills to load)
 - No API key required. You bring your own Claude environment.
 
 ---
@@ -50,11 +56,11 @@ On this GitHub page, click the green **Code** button, then click **Download ZIP*
 **Step 2: Open Claude settings**
 
 - In Claude.ai (browser): go to [claude.ai](https://claude.ai), click your profile icon in the top right, select **Settings**, then click **Features** in the sidebar, then **Skills**.
-- In Claude Desktop: open the app, go to **Settings → Capabilities → Skills**.
+- In Claude Desktop: open the app, go to **Settings > Capabilities > Skills**.
 
 **Step 3: Enable Code Execution**
 
-In Settings → Capabilities, make sure **Code Execution** is turned on. Skills will not load without it.
+In Settings > Capabilities, make sure **Code Execution** is turned on. Skills will not load without it.
 
 **Step 4: Upload each skill**
 
@@ -70,8 +76,8 @@ For each of the six skill folders (Interviewer, Resume Writer, Job Search Expert
 Once all six are uploaded, Claude will use them automatically when you start a job search session.
 
 **How to zip a single skill folder (no coding required):**
-- On Mac: right-click the skill folder → Compress
-- On Windows: right-click the skill folder → Send to → Compressed (zipped) folder
+- On Mac: right-click the skill folder > Compress
+- On Windows: right-click the skill folder > Send to > Compressed (zipped) folder
 
 ---
 
@@ -289,7 +295,7 @@ Continue as needed through panel, final round, and offer negotiation.
 ## Troubleshooting
 
 **Skills are not triggering**
-Make sure Code Execution is enabled in Settings → Capabilities. Skills will not load without it.
+Make sure Code Execution is enabled in Settings > Capabilities. Skills will not load without it.
 
 **Document upload is not working**
 Any file format Claude supports works: PDF, Word, or plain text. If a file fails to upload, paste the text directly into chat instead.
@@ -319,7 +325,7 @@ Full license: https://creativecommons.org/licenses/by-nc/4.0/
 
 ---
 
-**Compensation research**
+## Compensation Research
 
 When preparing for offer negotiation, Interview Prep automatically searches these sources and synthesizes them into a base, bonus, equity, and total compensation range for your specific role, level, and location. These sources are also listed so you can cross-reference independently.
 
@@ -334,7 +340,7 @@ When preparing for offer negotiation, Interview Prep automatically searches thes
 | Built In | Startup and growth-stage company compensation. Covers equity and total comp packages |
 | Indeed Salary | High volume, broad coverage across industries. Best used as a cross-reference |
 
-**Salary law research**
+## Salary Law Research
 
 Interview Prep also searches these authoritative sources for salary history and expectation ban laws in your jurisdiction before every recruiter screen prep. The result is cached and refreshed every 90 days automatically.
 
