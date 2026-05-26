@@ -1,5 +1,5 @@
 # Shared User Profile Schema
-## Interview Ready: Cross-Skill Context Object
+## Calibrated Candidate: Cross-Skill Context Object
 
 This schema defines the canonical user profile object built by Skill 01 and consumed by Skills 02, 03, and 04. Every skill that needs user context pulls from this structure: nothing is re-asked if it already exists here.
 
@@ -131,7 +131,7 @@ The profile object lives in the active conversation context. Skills inject the r
 **Limitation:** Context does not survive across separate conversations. If the user starts a new chat, the profile must be rebuilt or loaded from file.
 
 ### File-Based (portable)
-The user can export their profile at any point by requesting it. It saves as `interview_ready_profile.json` to their output directory or cloud-connected storage.
+The user can export their profile at any point by requesting it. It saves as `calibrated_candidate_profile.json` to their output directory or cloud-connected storage.
 
 On subsequent sessions, the user uploads or references this file and any skill can reload the profile without re-interviewing.
 

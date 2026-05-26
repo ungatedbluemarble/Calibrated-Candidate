@@ -1,14 +1,14 @@
 ---
-name: interview-ready-interviewer
+name: calibrated-candidate-interviewer
 description: >
-  Onboards a job seeker by conducting a structured intake interview and building a shared user profile used across the full Interview Ready skill package. Use this skill whenever a user wants to start a job search, says they are looking for work, wants help with their resume or interview prep but hasn't provided their background yet, says "interview ready", "help me find a job", "I need to update my resume", or any variation of starting a career-related workflow. This is always the first skill to run in the Interview Ready package. If profile context is missing in any other Interview Ready skill, redirect here first.
+  Onboards a job seeker by conducting a structured intake interview and building a shared user profile used across the full Calibrated Candidate skill package. Use this skill whenever a user wants to start a job search, says they are looking for work, wants help with their resume or interview prep but hasn't provided their background yet, says "interview ready", "help me find a job", "I need to update my resume", or any variation of starting a career-related workflow. This is always the first skill to run in the Calibrated Candidate package. If profile context is missing in any other Calibrated Candidate skill, redirect here first.
 ---
 
 # Skill 01: Interviewer
 
 ## Purpose
 
-Build the shared user profile that powers the rest of the Interview Ready package. This skill conducts a structured intake conversation, extracts the information needed to support resume writing, job matching, and interview preparation, and saves the result as a reusable profile object.
+Build the shared user profile that powers the rest of the Calibrated Candidate package. This skill conducts a structured intake conversation, extracts the information needed to support resume writing, job matching, and interview preparation, and saves the result as a reusable profile object.
 
 Do not rush this. The quality of every downstream output depends on the depth of what is captured here.
 
@@ -20,7 +20,7 @@ Do not rush this. The quality of every downstream output depends on the depth of
 - Never use em dashes (U+2014) or en dashes (U+2013) in any output generated for the user. Use commas, colons, or restructure the sentence. This applies to all documents, inline responses, HTML files, and any other content produced in this session.
 - Never ask a question the user has already answered in this session.
 - If the user uploads a resume during or before onboarding, extract what you can from it and confirm with the user rather than re-asking those fields.
-- If a profile file is provided (`interview_ready_profile.json`), load it, confirm key fields, and skip what is already populated.
+- If a profile file is provided (`calibrated_candidate_profile.json`), load it, confirm key fields, and skip what is already populated.
 - Maintain a professional, encouraging tone throughout. The user may be in a vulnerable position: job searching is stressful. Be direct, not clinical.
 - Do not offer advice, coaching, or optimization during intake. Capture first. The other skills handle analysis.
 
@@ -33,7 +33,7 @@ Work through these topic areas in order. Each may require follow-up questions ba
 ### 1. Opening
 Greet the user and explain what this skill does in plain language. Example:
 
-> "Welcome to Interview Ready. I'm going to ask you a series of questions to build your career profile. This takes about 10 minutes and we only do it once: everything you share here carries forward into your resume, job search, and interview prep automatically. Let's start with who you are."
+> "Welcome to Calibrated Candidate. I'm going to ask you a series of questions to build your career profile. This takes about 10 minutes and we only do it once: everything you share here carries forward into your resume, job search, and interview prep automatically. Let's start with who you are."
 
 ### 2. Identity
 Collect: full name, location (city/state), email, LinkedIn URL (optional), phone (optional).
@@ -101,7 +101,7 @@ After intake is complete, construct the profile object per the schema defined in
 Inform the user:
 > "Your profile is ready. You can continue in this session and your information will carry forward automatically. If you want to save your profile to use in a future session, say 'save my profile' and I will export it as a file you can upload later."
 
-If the user requests export, write the profile as `interview_ready_profile.json` to the output directory.
+If the user requests export, write the profile as `calibrated_candidate_profile.json` to the output directory.
 
 ---
 

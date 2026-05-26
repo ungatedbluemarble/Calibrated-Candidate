@@ -2,7 +2,7 @@
 
 ## Overview
 
-Interview Ready is a Claude skill package consisting of markdown instruction files. It does not include executable server code, databases, authentication systems, or network services. The attack surface is intentionally minimal.
+Calibrated Candidate is a Claude skill package consisting of markdown instruction files. It does not include executable server code, databases, authentication systems, or network services. The attack surface is intentionally minimal.
 
 That said, security matters here for specific reasons. This package handles sensitive personal information , career history, compensation targets, employment status, and job search motivations. It also generates guidance that job seekers will act on in real situations. Getting that wrong has real consequences for real people.
 

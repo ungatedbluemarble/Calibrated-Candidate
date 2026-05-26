@@ -1,4 +1,4 @@
-# Writing Examples: Interview Ready Reference
+# Writing Examples: Calibrated Candidate Reference
 ## Structural models for resume, cover letter, and interview prep documents
 
 This file is the canonical style reference for Skills 02 and 04. When writing any document, consult this file to ensure structure, tone, and formatting match the approved examples.
@@ -201,7 +201,7 @@ Written as direct statements, not hedged suggestions. One sentence each.
 
 ## Document Color Palette
 
-Consistent across all Interview Ready documents:
+Consistent across all Calibrated Candidate documents:
 
 | Token | Hex | Use |
 |---|---|---|

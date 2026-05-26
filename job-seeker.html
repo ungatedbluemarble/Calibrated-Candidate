@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interview Ready: For Job Seekers</title>
+<title>Calibrated Candidate: For Job Seekers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
@@ -416,7 +416,7 @@
   <h1>From Desire <em>to Hired</em></h1>
   <p class="header-sub">The career preparation that used to cost hundreds of dollars or require knowing the right people. Free for anyone.</p>
   <div class="header-btns">
-    <a href="https://github.com/ungatedbluemarble/interview-ready" class="btn btn-primary" target="_blank" rel="noopener">Get it on GitHub</a>
+    <a href="https://github.com/ungatedbluemarble/calibrated-candidate" class="btn btn-primary" target="_blank" rel="noopener">Get it on GitHub</a>
     <a href="#installation" class="btn btn-secondary">How to install</a>
   </div>
 </header>
@@ -442,7 +442,7 @@
 
   <section id="what-this-is">
     <h2>What It Does For You</h2>
-    <p class="lead">Interview Ready takes you from wanting a job to getting one. It handles every stage of the process: building your resume, finding the right roles, preparing you for every interview, practicing with you until you are ready, and helping you negotiate the offer you deserve.</p>
+    <p class="lead">Calibrated Candidate takes you from wanting a job to getting one. It handles every stage of the process: building your resume, finding the right roles, preparing you for every interview, practicing with you until you are ready, and helping you negotiate the offer you deserve.</p>
     <p>Everything is grounded in real company research and your actual background. Not templates. Not generic advice. Preparation built specifically for the job you are going after.</p>
     <p>And it remembers everything. Your background, your goals, your experience. You never start over between sessions.</p>
     <div class="callout" style="margin-top:1.25rem;">
@@ -536,19 +536,19 @@
     </div>
 
     <h3>Option 2: Claude Code</h3>
-    <pre><code>git clone https://github.com/ungatedbluemarble/interview-ready.git
-cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
+    <pre><code>git clone https://github.com/ungatedbluemarble/calibrated-candidate.git
+cp -r calibrated-candidate/skill-* ~/.claude/skills/</code></pre>
 
     <h3>Option 3: One-liner</h3>
     <pre><code>mkdir -p ~/.claude/skills && \
-  git clone https://github.com/ungatedbluemarble/interview-ready.git /tmp/interview-ready && \
-  cp -r /tmp/interview-ready/skill-* ~/.claude/skills/</code></pre>
+  git clone https://github.com/ungatedbluemarble/calibrated-candidate.git /tmp/calibrated-candidate && \
+  cp -r /tmp/calibrated-candidate/skill-* ~/.claude/skills/</code></pre>
   </section>
 
   <section id="usage">
     <h2>Usage</h2>
     <p>Once installed, start with Skill 01. Everything else follows from there. In any Claude session, say:</p>
-    <blockquote>"I'm ready to start Interview Ready."</blockquote>
+    <blockquote>"I'm ready to start Calibrated Candidate."</blockquote>
     <p>or</p>
     <blockquote>"I need help with my job search."</blockquote>
     <p>Skill 01 will onboard you, build your profile, and route you to the right skill based on what you need.</p>
@@ -557,7 +557,7 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     <div class="table-wrap"><table>
       <thead><tr><th>What to say</th><th>Skill triggered</th></tr></thead>
       <tbody>
-        <tr><td>"Start Interview Ready" / "I need help with my job search"</td><td>Skill 01: Interviewer</td></tr>
+        <tr><td>"Start Calibrated Candidate" / "I need help with my job search"</td><td>Skill 01: Interviewer</td></tr>
         <tr><td>"Write my resume" / "Update my cover letter"</td><td>Skill 02: Resume Writer</td></tr>
         <tr><td>"Find jobs for me" / "Review this job description"</td><td>Skill 03: Job Search Expert</td></tr>
         <tr><td>"I have an interview" / "Prep me for my interview"</td><td>Skill 04: Interview Prep</td></tr>
@@ -585,7 +585,7 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
       </div>
       <div class="info-card">
         <h3>File-based</h3>
-        <p>Export your profile at any time. Upload <code>interview_ready_profile.json</code> in future sessions to continue without re-interviewing.</p>
+        <p>Export your profile at any time. Upload <code>calibrated_candidate_profile.json</code> in future sessions to continue without re-interviewing.</p>
       </div>
     </div>
   </section>
@@ -616,7 +616,7 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     <h2>Managing Your Session</h2>
     <p><strong>Note:</strong> Skill 05 (Mock Interviewer) does not produce a document output. Session results are recorded in your profile interview history and a session summary is delivered in chat.</p>
 
-  <p>Interview Ready is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.</p>
+  <p>Calibrated Candidate is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.</p>
 
     <h3>Estimated Token Usage</h3>
     <div class="table-wrap"><table>
@@ -680,13 +680,13 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     </table></div>
 
     <div class="callout callout-warn">
-      <strong>Disclaimer:</strong> Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
+      <strong>Disclaimer:</strong> Calibrated Candidate is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
     </div>
   </section>
 
   <section id="connectors">
     <h2>Connected Services</h2>
-    <p class="lead">Interview Ready can connect to your email, cloud storage, and calendar through Claude's connected apps. These are optional: everything works without them. During onboarding, Skill 01 asks whether you want to enable any of the following.</p>
+    <p class="lead">Calibrated Candidate can connect to your email, cloud storage, and calendar through Claude's connected apps. These are optional: everything works without them. During onboarding, Skill 01 asks whether you want to enable any of the following.</p>
     <div class="table-wrap"><table>
       <thead><tr><th>Service</th><th>What it enables</th></tr></thead>
       <tbody>
@@ -698,12 +698,12 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     <div class="callout">
       <p><strong>Recruiter email addresses</strong> are what make inbox checking work. When you run prep for any role (Skill 04), you will be prompted to share the recruiter's email if you have it. Once stored in your profile, Skill 06 uses it to find the right thread when checking your pipeline status.</p>
     </div>
-    <p>To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Interview Ready session.</p>
+    <p>To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Calibrated Candidate session.</p>
   </section>
 
   <section id="companion">
     <h2>Companion Tools</h2>
-    <p>Interview Ready handles research, documents, and interview preparation. It does not replace a dedicated application tracker.</p>
+    <p>Calibrated Candidate handles research, documents, and interview preparation. It does not replace a dedicated application tracker.</p>
 
     <h3>Application Tracking</h3>
     <div class="table-wrap"><table>
@@ -740,7 +740,7 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
     <h2>Contributing</h2>
     <p>Pull requests welcome. If you extend this package for a specific industry, role type, or platform, open a PR with your additions and a note on what changed and why.</p>
     <p>Use the issue templates in the GitHub repo to report bugs, request features, or submit reference files and assets.</p>
-    <a href="https://github.com/ungatedbluemarble/interview-ready/issues/new/choose" class="btn btn-primary" style="margin-top:0.5rem;">Open an Issue</a>
+    <a href="https://github.com/ungatedbluemarble/calibrated-candidate/issues/new/choose" class="btn btn-primary" style="margin-top:0.5rem;">Open an Issue</a>
   </section>
 
   <section id="linkedin">
@@ -758,8 +758,8 @@ cp -r interview-ready/skill-* ~/.claude/skills/</code></pre>
 </main>
 
 <footer>
-  <p>Built by <a href="https://github.com/ungatedbluemarble">@ungatedbluemarble</a>. Interview Ready was built from a real workflow and open-sourced because the problem is universal.</p>
-  <p style="margin-top:0.5rem;"><a href="https://github.com/ungatedbluemarble/interview-ready">GitHub</a> &nbsp;|&nbsp; <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+  <p>Built by <a href="https://github.com/ungatedbluemarble">@ungatedbluemarble</a>. Calibrated Candidate was built from a real workflow and open-sourced because the problem is universal.</p>
+  <p style="margin-top:0.5rem;"><a href="https://github.com/ungatedbluemarble/calibrated-candidate">GitHub</a> &nbsp;|&nbsp; <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
 </footer>
 
 </body>

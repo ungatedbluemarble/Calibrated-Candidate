@@ -1,7 +1,7 @@
 ---
-name: interview-ready-pipeline-dashboard
+name: calibrated-candidate-pipeline-dashboard
 description: >
-  Tracks and displays the user's active job search pipeline. Use this skill whenever the user asks about their application status, says "where am I with my applications", "show me my pipeline", "what interviews do I have coming up", "which companies am I tracking", "give me a summary of my job search", "add this company to my tracker", or any variation of requesting an overview or update of their active applications. Does not require an active prep session. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
+  Tracks and displays the user's active job search pipeline. Use this skill whenever the user asks about their application status, says "where am I with my applications", "show me my pipeline", "what interviews do I have coming up", "which companies am I tracking", "give me a summary of my job search", "add this company to my tracker", or any variation of requesting an overview or update of their active applications. Does not require an active prep session. Requires user profile context from calibrated-candidate-interviewer. If profile is missing, prompt for it before proceeding.
 ---
 
 # Skill 06: Pipeline Dashboard
@@ -188,9 +188,9 @@ After every update or addition, prompt the user to save:
 
 > "I have updated your pipeline. Say 'save my profile' to export the file and keep these changes for future sessions. Without saving, updates will not carry over when this conversation ends."
 
-If the user says "save my profile," write the full current profile object to interview_ready_profile.json in the output directory and confirm:
+If the user says "save my profile," write the full current profile object to calibrated_candidate_profile.json in the output directory and confirm:
 
-> "Your profile has been saved. Upload this file at the start of any future Interview Ready session to pick up where you left off."
+> "Your profile has been saved. Upload this file at the start of any future Calibrated Candidate session to pick up where you left off."
 
 ---
 

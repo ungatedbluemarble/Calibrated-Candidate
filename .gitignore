@@ -14,7 +14,7 @@ Desktop.ini
 *~
 
 # User profile data : never commit personal data
-interview_ready_profile.json
+calibrated_candidate_profile.json
 *.profile.json
 
 # Build artifacts

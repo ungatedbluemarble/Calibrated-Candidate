@@ -1,7 +1,7 @@
 # Document Style Guide
-## Interview Ready: Visual Standards for All Generated Documents
+## Calibrated Candidate: Visual Standards for All Generated Documents
 
-This file is the single source of truth for visual formatting across every document produced by the Interview Ready skill package. Skills 02 and 04 both reference this file. Do not define colors, fonts, or layout standards anywhere else.
+This file is the single source of truth for visual formatting across every document produced by the Calibrated Candidate skill package. Skills 02 and 04 both reference this file. Do not define colors, fonts, or layout standards anywhere else.
 
 ---
 

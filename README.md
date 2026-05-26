@@ -1,22 +1,22 @@
-# Interview Ready: Claude Skill Package
+# Calibrated Candidate: Claude Skill Package
 
-Every other tool gives you a service and costs money. Interview Ready gives you a system that knows you, researches for you, and works across your entire job search from first resume to signed offer.
+Every other tool gives you a service and costs money. Calibrated Candidate gives you a system that knows you, researches for you, and works across your entire job search from first resume to signed offer.
 
 A six-skill package that takes any job seeker from raw profile to hired. Covers onboarding, resume writing, job search evaluation, full interview pipeline preparation, live EEOC-compliant mock interview sessions, and pipeline tracking.
 
-Works in Claude.ai (browser), Claude Desktop, and Claude Code. Interview Ready is always free.
+Works in Claude.ai (browser), Claude Desktop, and Claude Code. Calibrated Candidate is always free.
 
 ---
 
 ## User Guide
 
-New to Interview Ready? The [User Guide](https://github.com/ungatedbluemarble/interview-ready/blob/main/InterviewReady_UserGuide_2026.pdf) covers both Claude free and Pro plan users and walks you through every skill session by session, from your first profile build through offer negotiation. No technical knowledge required.
+New to Calibrated Candidate? The [User Guide](https://github.com/ungatedbluemarble/calibrated-candidate/blob/main/CalibratedCandidate_UserGuide_2026.pdf) covers both Claude free and Pro plan users and walks you through every skill session by session, from your first profile build through offer negotiation. No technical knowledge required.
 
 ---
 
 ## What This Is
 
-Interview Ready is a structured, research-grounded career preparation system built as Claude skills. Each skill is autonomous but context-aware: they share a user profile so you are never asked the same question twice across the workflow.
+Calibrated Candidate is a structured, research-grounded career preparation system built as Claude skills. Each skill is autonomous but context-aware: they share a user profile so you are never asked the same question twice across the workflow.
 
 Every output is grounded in actual company research and your real background. This is not a template generator.
 
@@ -86,14 +86,14 @@ Once all six are uploaded, Claude will use them automatically when you start a j
 If you use Claude Code, clone the repo and copy the skills to your skills directory:
 
 ```bash
-git clone https://github.com/ungatedbluemarble/interview-ready.git
-cp -r interview-ready/skill-* ~/.claude/skills/
+git clone https://github.com/ungatedbluemarble/calibrated-candidate.git
+cp -r calibrated-candidate/skill-* ~/.claude/skills/
 ```
 
 Or install per-project (shared with anyone who clones your repo):
 
 ```bash
-cp -r interview-ready/skill-* .claude/skills/
+cp -r calibrated-candidate/skill-* .claude/skills/
 ```
 
 ---
@@ -102,8 +102,8 @@ cp -r interview-ready/skill-* .claude/skills/
 
 ```bash
 mkdir -p ~/.claude/skills && \
-  git clone https://github.com/ungatedbluemarble/interview-ready.git /tmp/interview-ready && \
-  cp -r /tmp/interview-ready/skill-* ~/.claude/skills/
+  git clone https://github.com/ungatedbluemarble/calibrated-candidate.git /tmp/calibrated-candidate && \
+  cp -r /tmp/calibrated-candidate/skill-* ~/.claude/skills/
 ```
 
 ---
@@ -114,7 +114,7 @@ Once installed, start with the Interviewer skill. Everything else follows from t
 
 In any Claude session, say:
 
-> "I'm ready to start Interview Ready."
+> "I'm ready to start Calibrated Candidate."
 
 or
 
@@ -130,7 +130,7 @@ You can also go directly to any skill:
 
 | What to say | Skill triggered |
 |---|---|
-| "Start Interview Ready" / "I need help with my job search" | Interviewer |
+| "Start Calibrated Candidate" / "I need help with my job search" | Interviewer |
 | "Write my resume" / "Update my cover letter" | Resume Writer |
 | "Find jobs for me" / "Review this job description" | Job Search Expert |
 | "I have an interview" / "Prep me for my interview" | Interview Prep |
@@ -141,7 +141,7 @@ You can also go directly to any skill:
 
 ## Connected Services (Optional)
 
-Interview Ready can connect to your email, cloud storage, and calendar through Claude's connected apps to make the workflow significantly more useful. These are optional: everything works without them.
+Calibrated Candidate can connect to your email, cloud storage, and calendar through Claude's connected apps to make the workflow significantly more useful. These are optional: everything works without them.
 
 During onboarding (Interviewer), you will be asked whether you want to enable any of the following:
 
@@ -151,7 +151,7 @@ During onboarding (Interviewer), you will be asked whether you want to enable an
 | Google Drive, OneDrive, SharePoint, Dropbox, Box | Resume Writer and Job Search Expert can pull your resume or job descriptions directly from storage without requiring a file upload each time. |
 | Google Calendar or Outlook Calendar | Pipeline Dashboard can read scheduled interview dates from your calendar and surface them in the pipeline view automatically. |
 
-To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Interview Ready session. You can add connectors at any time: if you connect email after your initial onboarding, tell the Interviewer skill during your next session and it will update your profile.
+To connect a service, go to Claude settings and enable the relevant connector under Connected Apps before starting your Calibrated Candidate session. You can add connectors at any time: if you connect email after your initial onboarding, tell the Interviewer skill during your next session and it will update your profile.
 
 **Recruiter email addresses** are the key to inbox checking. When you run prep for any role (Interview Prep), you will be prompted to share the recruiter's email if you have it. Once stored in your profile, Pipeline Dashboard uses it to find the right email thread when checking your pipeline status.
 
@@ -171,7 +171,7 @@ The skills do not require any specific cloud service. Whatever document source y
 
 ## Pipeline Dashboard
 
-Interview Ready includes a purpose-built pipeline dashboard through the `skill-06-pipeline-dashboard` skill. You do not need an external tracker.
+Calibrated Candidate includes a purpose-built pipeline dashboard through the `skill-06-pipeline-dashboard` skill. You do not need an external tracker.
 
 The dashboard surfaces your full job search in one view: active applications by stage, what needs attention and why, upcoming interview dates, offers pending, and last recruiter contact for each role. It flags urgency automatically. If a final round is in two days with no prep completed, it surfaces that. If a hiring manager interview went quiet nine days ago, it flags it for follow-up. If an offer is pending, it prompts you to run negotiation prep before responding.
 
@@ -195,7 +195,7 @@ The user profile built in the Interviewer skill carries forward into every other
 
 **Session-persistent (default):** The profile lives in the active conversation. No file is written unless you request it. If you close the session, the profile does not carry over automatically.
 
-**File-based (portable):** Export your profile at any time by saying "save my profile." It saves as `interview_ready_profile.json`. In future sessions, upload that file and any skill reloads your full profile without re-interviewing you.
+**File-based (portable):** Export your profile at any time by saying "save my profile." It saves as `calibrated_candidate_profile.json`. In future sessions, upload that file and any skill reloads your full profile without re-interviewing you.
 
 **Performance note:** Long sessions with heavy document processing: multiple resume revisions, several prep documents: may approach Claude's context limits. If that happens, export your profile, start a new session, upload the file, and continue. The skill will pick up where you left off.
 
@@ -223,7 +223,7 @@ The user profile built in the Interviewer skill carries forward into every other
 
 ## Disclaimer
 
-Interview Ready is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
+Calibrated Candidate is provided for informational purposes only and does not constitute legal, financial, or professional career advice. Compensation data, salary law guidance, and negotiation strategies are research aids, not legal or financial counsel. Use your own judgment and consult a qualified professional where appropriate.
 
 ---
 
@@ -253,7 +253,7 @@ LinkedIn blocks automated content fetching. When this package researches a hirin
 
 ## Managing Your Session
 
-Interview Ready is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.
+Calibrated Candidate is designed to be used across multiple sessions, not in one sitting. Each skill is token-intensive and running the full pipeline end to end in a single conversation will approach Claude's context limits.
 
 **Estimated token usage by stage:**
 
@@ -321,7 +321,7 @@ Full license: https://creativecommons.org/licenses/by-nc/4.0/
 
 ---
 
-*Built by @ungatedbluemarble. Interview Ready was built from a real workflow and open-sourced because the problem is universal.*
+*Built by @ungatedbluemarble. Calibrated Candidate was built from a real workflow and open-sourced because the problem is universal.*
 
 ---
 

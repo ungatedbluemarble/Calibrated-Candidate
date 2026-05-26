@@ -1,7 +1,7 @@
 ---
-name: interview-ready-interview-prep
+name: calibrated-candidate-interview-prep
 description: >
-  Prepares a job seeker for every stage of the hiring pipeline from recruiter screen through offer negotiation. Produces research-grounded, candidate-specific prep documents as Word deliverables. Use this skill whenever a user has an interview coming up, asks how to prepare for a recruiter call, wants to know what questions to expect, needs help preparing for a hiring manager conversation, panel interview, or final round, or says "I have an interview", "prep me for my interview", "what should I say", "help me practice", or any variation of interview preparation. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
+  Prepares a job seeker for every stage of the hiring pipeline from recruiter screen through offer negotiation. Produces research-grounded, candidate-specific prep documents as Word deliverables. Use this skill whenever a user has an interview coming up, asks how to prepare for a recruiter call, wants to know what questions to expect, needs help preparing for a hiring manager conversation, panel interview, or final round, or says "I have an interview", "prep me for my interview", "what should I say", "help me practice", or any variation of interview preparation. Requires user profile context from calibrated-candidate-interviewer. If profile is missing, prompt for it before proceeding.
 ---
 
 # Skill 04: Interview Prep
@@ -199,7 +199,7 @@ If the recruiter insists on a number before moving forward and the candidate dec
 **HTML compensation report (on request only):** After delivering the compensation section of any prep document, offer once:
 > "Would you like an HTML version of this compensation analysis formatted for easy reference during your negotiation?"
 
-Only generate if the user says yes. Use the Interview Ready design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Include salary law findings, the benchmarking table, a visual range bar with the recommended anchor marked, and the negotiation scripts. Do not generate this automatically.
+Only generate if the user says yes. Use the Calibrated Candidate design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Include salary law findings, the benchmarking table, a visual range bar with the recommended anchor marked, and the negotiation scripts. Do not generate this automatically.
 
 ### Hiring Manager
 
@@ -347,9 +347,9 @@ After every prep session, whether or not a mock interview is run, prompt the use
 
 > "I have added this prep session to your interview history. If you want this saved for future sessions, say 'save my profile' and I will export your updated profile file. Without saving, your interview history will not carry over to a new conversation."
 
-If the user says "save my profile" at any point, write the full current profile object including the updated `interview_history` array to `interview_ready_profile.json` in the output directory and confirm:
+If the user says "save my profile" at any point, write the full current profile object including the updated `interview_history` array to `calibrated_candidate_profile.json` in the output directory and confirm:
 
-> "Your profile has been saved. Upload this file at the start of any future Interview Ready session to pick up where you left off. Your interview history, background, and preferences will all carry forward."
+> "Your profile has been saved. Upload this file at the start of any future Calibrated Candidate session to pick up where you left off. Your interview history, background, and preferences will all carry forward."
 
 **Why this matters:** Session-persistent context does not survive when the conversation ends. A user managing multiple active job pipelines across several companies and stages will lose all tracking if the profile is not exported. The prompt must appear at the end of every prep session without exception, even if the user did not ask for it.
 

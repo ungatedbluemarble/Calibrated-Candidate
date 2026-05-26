@@ -7,7 +7,7 @@ This folder is reserved for assets that support the onboarding and profile-build
 ## What Belongs Here
 
 **Profile export templates**
-If you want the exported `interview_ready_profile.json` to render as something human-readable: a formatted PDF summary, a one-page profile card, or a structured Word document the user can review and correct: place the template file here and update the SKILL.md to reference it during export.
+If you want the exported `calibrated_candidate_profile.json` to render as something human-readable: a formatted PDF summary, a one-page profile card, or a structured Word document the user can review and correct: place the template file here and update the SKILL.md to reference it during export.
 
 **Onboarding flow diagrams**
 A visual map of the intake sequence can help contributors understand how the skill routes between topic areas and when it hands off to other skills. Place any flow diagrams here in SVG or PNG format.

@@ -1,7 +1,7 @@
 ---
-name: interview-ready-resume-writer
+name: calibrated-candidate-resume-writer
 description: >
-  Writes or rewrites a professional resume and cover letter for any job seeker. Use this skill whenever a user asks to update their resume, write a cover letter, improve their resume, tailor their resume to a job, or produce a Word document for a job application. Trigger on: "write my resume", "rewrite my resume", "update my resume", "cover letter", "help me apply", or any request to produce a job application document. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
+  Writes or rewrites a professional resume and cover letter for any job seeker. Use this skill whenever a user asks to update their resume, write a cover letter, improve their resume, tailor their resume to a job, or produce a Word document for a job application. Trigger on: "write my resume", "rewrite my resume", "update my resume", "cover letter", "help me apply", or any request to produce a job application document. Requires user profile context from calibrated-candidate-interviewer. If profile is missing, prompt for it before proceeding.
 ---
 
 # Skill 02: Resume Writer
@@ -187,7 +187,7 @@ Inform the user:
 **HTML before and after (on request only):** After delivering the Word document, offer once:
 > "Would you like an HTML version showing the before and after of your rewrite, formatted for sharing or presenting visually?"
 
-Only generate if the user says yes. Use the Interview Ready design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Show the original language on the left and the rewritten language on the right. Anonymize with Jane Doe or John Doe if the user requests it for sharing. Do not generate this automatically.
+Only generate if the user says yes. Use the Calibrated Candidate design system (DM Serif Display, DM Sans, DM Mono, CSS variables matching the site). Show the original language on the left and the rewritten language on the right. Anonymize with Jane Doe or John Doe if the user requests it for sharing. Do not generate this automatically.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
-name: interview-ready-mock-interviewer
+name: calibrated-candidate-mock-interviewer
 description: >
-  Runs a structured, EEOC-compliant mock interview session tailored to a specific job description and the candidate's real background. Use this skill whenever a user wants to practice for an interview, says "mock interview", "practice with me", "interview me", "quiz me on the role", "simulate my interview", "test my answers", or any variation of wanting to rehearse for an upcoming interview. Works across all pipeline stages: recruiter screen, hiring manager, panel, final round. Requires user profile context from interview-ready-interviewer and a job description. If either is missing, ask for them before proceeding. Can be used independently or after Skill 04 has generated a prep document.
+  Runs a structured, EEOC-compliant mock interview session tailored to a specific job description and the candidate's real background. Use this skill whenever a user wants to practice for an interview, says "mock interview", "practice with me", "interview me", "quiz me on the role", "simulate my interview", "test my answers", or any variation of wanting to rehearse for an upcoming interview. Works across all pipeline stages: recruiter screen, hiring manager, panel, final round. Requires user profile context from calibrated-candidate-interviewer and a job description. If either is missing, ask for them before proceeding. Can be used independently or after Skill 04 has generated a prep document.
 ---
 
 # Skill 05: Mock Interviewer

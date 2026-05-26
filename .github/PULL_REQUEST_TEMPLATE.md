@@ -1,6 +1,6 @@
 ---
 name: Pull request
-about: Submit a contribution to Interview Ready
+about: Submit a contribution to Calibrated Candidate
 ---
 
 ## What this PR does

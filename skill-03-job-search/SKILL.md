@@ -1,7 +1,7 @@
 ---
-name: interview-ready-job-search
+name: calibrated-candidate-job-search
 description: >
-  Matches a job seeker's profile to industries and roles, evaluates job descriptions, and provides actionable guidance on how to pursue specific opportunities. Use this skill whenever a user wants to find jobs that match their background, asks whether they are a fit for a specific role, pastes or shares a job description for review, references a folder of job postings from any connected cloud storage or local source, or asks "what jobs should I be applying for", "does this role fit me", "review this job posting", "evaluate this JD", "am I a good fit for this", or any variation of job search evaluation or job description review. Trigger even when the user pastes a block of text that resembles a job posting without explicitly requesting a review. Requires user profile context from interview-ready-interviewer. If profile is missing, prompt for it before proceeding.
+  Matches a job seeker's profile to industries and roles, evaluates job descriptions, and provides actionable guidance on how to pursue specific opportunities. Use this skill whenever a user wants to find jobs that match their background, asks whether they are a fit for a specific role, pastes or shares a job description for review, references a folder of job postings from any connected cloud storage or local source, or asks "what jobs should I be applying for", "does this role fit me", "review this job posting", "evaluate this JD", "am I a good fit for this", or any variation of job search evaluation or job description review. Trigger even when the user pastes a block of text that resembles a job posting without explicitly requesting a review. Requires user profile context from calibrated-candidate-interviewer. If profile is missing, prompt for it before proceeding.
 ---
 
 # Skill 03: Job Search Expert

@@ -38,7 +38,7 @@ Examples of unacceptable behavior include:
 
 ## A Note on This Project
 
-Interview Ready exists to help job seekers who do not have access to expensive
+Calibrated Candidate exists to help job seekers who do not have access to expensive
 coaches, insider networks, or professional connections. Every person who
 participates in this community, whether as a contributor, tester, or user, is
 here in service of that mission.

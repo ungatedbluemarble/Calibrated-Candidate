@@ -1,4 +1,4 @@
-# Contributing to Interview Ready
+# Contributing to Calibrated Candidate
 
 Thank you for being here. Every contribution to this project serves one purpose: making career preparation accessible to people who do not have access to expensive coaches, insider networks, or professional connections. Keep that in mind as you contribute.
 
@@ -6,7 +6,7 @@ Thank you for being here. Every contribution to this project serves one purpose:
 
 ## What We Are Looking For
 
-Interview Ready is built on Claude skills. The core skills are functional. What the community can add is depth, coverage, and reach that the initial build could not cover alone.
+Calibrated Candidate is built on Claude skills. The core skills are functional. What the community can add is depth, coverage, and reach that the initial build could not cover alone.
 
 The highest-value contributions right now are:
 
@@ -43,7 +43,7 @@ This gives the maintainer a chance to confirm the contribution is aligned before
 
 ### Step 2: Fork the repo
 
-Fork `ungatedbluemarble/interview-ready` to your own GitHub account. Make your changes in your fork.
+Fork `ungatedbluemarble/calibrated-candidate` to your own GitHub account. Make your changes in your fork.
 
 ### Step 3: Follow the file standards
 

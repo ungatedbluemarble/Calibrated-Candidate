@@ -1,7 +1,7 @@
 # Connector Onboarding Guide
 ## Skill 01: Interviewer | Reference File
 
-This guide covers how to ask the user about cloud and email connectors during intake, why each connector benefits the Interview Ready workflow, and how to record the result in the profile.
+This guide covers how to ask the user about cloud and email connectors during intake, why each connector benefits the Calibrated Candidate workflow, and how to record the result in the profile.
 
 ---
 
@@ -17,7 +17,7 @@ Do not run this step if the user is loading a saved profile from a previous sess
 
 Introduce the step briefly before asking:
 
-> "Before we finish, I want to let you know that Interview Ready can connect to your email and cloud storage to make a few things significantly more useful. This is optional: everything works without it. But if you want, I can check whether you have responded to a recruiter, pull in job descriptions from your drive, or read your resume directly from storage without you needing to upload it each time. Would you like to connect any of these?"
+> "Before we finish, I want to let you know that Calibrated Candidate can connect to your email and cloud storage to make a few things significantly more useful. This is optional: everything works without it. But if you want, I can check whether you have responded to a recruiter, pull in job descriptions from your drive, or read your resume directly from storage without you needing to upload it each time. Would you like to connect any of these?"
 
 Then present the connector categories. Ask about each category in plain language, not by tool name. The user may not know what connectors they have enabled in Claude.
 
