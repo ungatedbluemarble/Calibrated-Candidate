@@ -113,7 +113,26 @@ This schema defines the canonical user profile object built by Skill 01 and cons
       "recruiter_email": "",
       "prep_document_generated": false,
       "outcome": "",
-      "notes": ""
+      "notes": "",
+      "company_research": {
+        "research_date": "",
+        "funding_status": "",
+        "headcount": "",
+        "value_proposition": "",
+        "recent_news_summary": "",
+        "competitive_landscape": "",
+        "culture_signals": "",
+        "financial_signals": "",
+        "interviewers": [
+          {
+            "name": "",
+            "title": "",
+            "background_summary": "",
+            "value_signals": "",
+            "research_date": ""
+          }
+        ]
+      }
     }
   ]
 }

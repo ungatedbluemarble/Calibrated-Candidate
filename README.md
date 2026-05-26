@@ -189,6 +189,24 @@ To update a specific application, say what changed and the dashboard refreshes t
 
 ---
 
+## Profile File Hygiene
+
+Calibrated Candidate works without a saved profile file, but the performance difference over a multi-stage job search is significant.
+
+**Without a saved profile:** Every session starts fresh. Research runs from scratch, prior company context is gone, and pipeline tracking resets. Fine for a single-session use. Costly if you are managing multiple active roles across several weeks.
+
+**With a saved profile:** Company research from prior sessions is cached and reused when you return to the same company. If you ran prep for a recruiter screen last week and now need to prep for the hiring manager at the same company, Interview Prep loads the prior research as a baseline and only checks for significant new developments rather than running a full research pass again. Interviewers already profiled carry forward. Your pipeline, salary law cache, and compensation research persist across sessions.
+
+The longer you use Calibrated Candidate with consistent file hygiene, the more it functions as a personal intelligence asset rather than a stateless tool.
+
+**The 30-day rule:** Cached company research stays current for 30 days. After that, Interview Prep automatically runs a full refresh to catch anything that has changed.
+
+**How to maintain hygiene:** At the end of every session, say "save my profile." Upload the saved `calibrated_candidate_profile.json` at the start of your next session. That is the entire process. If you skip saving, the session ends and that context is gone.
+
+**Who benefits most:** Candidates running a serious search across three or more active pipelines, and candidates moving through multiple stages at the same company, will see the clearest difference. Single-session or casual users will not notice a gap.
+
+---
+
 ## How Context Works
 
 The user profile built in the Interviewer skill carries forward into every other skill automatically. Skills pull only the slice of context they need: you are never re-asked for information you already provided.
@@ -263,12 +281,15 @@ Calibrated Candidate is designed to be used across multiple sessions, not in one
 | Resume Writer: Resume rewrite and cover letter | 8,000 to 15,000 |
 | Job Search Expert: Single JD evaluation | 3,000 to 5,000 |
 | Job Search Expert: Bulk JD review (5 JDs) | 10,000 to 15,000 |
-| Interview Prep: Single stage prep document | 8,000 to 12,000 |
+| Interview Prep: Single stage prep document (first session at a company) | 8,000 to 12,000 |
+| Interview Prep: Single stage prep document (returning to same company) | 5,000 to 9,000 |
 | Mock Interviewer: Standard practice session | 4,000 to 8,000 |
 | Mock Interviewer: Deep simulation session | 6,000 to 12,000 |
 | Pipeline Dashboard: Dashboard and updates | 1,000 to 2,000 |
 
 **Full pipeline estimate:** A complete end-to-end run covering intake, resume, one JD evaluation, recruiter screen prep, hiring manager prep, and a mock interview session consumes roughly 35,000 to 55,000 tokens. Running this in one session is possible but not recommended.
+
+**Note on multi-stage searches:** If you are progressing through multiple stages at the same company (recruiter screen, then hiring manager, then panel), each stage after the first benefits from cached company research. The second and third prep sessions at the same company will cost roughly 3,000 fewer tokens than the first, provided you save and reload your profile between sessions. Without the saved profile file, the cache is not available and each session runs full research cost.
 
 **Recommended approach:**
 

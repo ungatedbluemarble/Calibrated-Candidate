@@ -41,6 +41,44 @@ This skill covers the full hiring pipeline. Confirm which stage the user is prep
 
 Run this before writing any prep document.
 
+### Research Cache Check
+
+Before running any live research, check `interview_history` in the loaded profile for an existing entry matching the company name being prepared for.
+
+If a matching entry exists and it contains a `company_research` object:
+
+Check the `research_date` field. If the research is less than 30 days old, load it as the baseline and skip the Company Research pass below. Note to the user: "I found prior research on [Company] from [research_date]. I will use that as the baseline and check for anything significant that may have changed."
+
+If the research is 30 days old or older, run a full Company Research pass and overwrite the cached object with fresh results.
+
+If no matching entry exists, or if the entry has no `company_research` object, run the full Company Research pass below and write the results to a new `company_research` object on the `interview_history` entry for this role.
+
+**What to cache in `company_research`:**
+
+```json
+{
+  "research_date": "ISO8601 date",
+  "funding_status": "",
+  "headcount": "",
+  "value_proposition": "",
+  "recent_news_summary": "",
+  "competitive_landscape": "",
+  "culture_signals": "",
+  "financial_signals": "",
+  "interviewers": [
+    {
+      "name": "",
+      "title": "",
+      "background_summary": "",
+      "value_signals": "",
+      "research_date": "ISO8601 date"
+    }
+  ]
+}
+```
+
+Write this object to the `interview_history` entry immediately after research completes and prompt the user to save their profile so the cache persists to future sessions.
+
 ### Company Research
 - Funding status, valuation, headcount, geography
 - Product architecture and primary value proposition
