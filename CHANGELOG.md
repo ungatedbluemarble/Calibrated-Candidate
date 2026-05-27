@@ -4,6 +4,42 @@
 
 ## May 26, 2026
 
+**Skill updated:** Interview Prep (skill-04-interview-prep)
+**Closes:** Issue #11
+
+**What changed:** Automatic source health checking added for compensation and salary law sources.
+
+Skill 04 uses eight compensation data sources and five salary law sources to generate offer benchmarking and jurisdiction-specific salary law guidance. Previously there was no mechanism to detect or respond to source degradation when a source became paywalled, restructured, or discontinued.
+
+The skill now manages source health automatically using a `source_health_cache` object in the user profile. On first use the cache is empty and the skill always runs a full source check before generating compensation guidance. On subsequent uses the skill checks whether 90 days have passed since the last check and runs a fresh check if so. No manual scheduling or external reminders are required. The review cadence is tied to actual usage and persists across sessions as long as the user saves and reloads their profile.
+
+When a source check detects a degraded or failed source, the skill notifies the user before generating guidance rather than silently skipping the source.
+
+A new reference document `quarterly-source-review.md` has been added to `skill-04-interview-prep/references/`. It defines verification criteria for all thirteen sources, pass/degraded/failed classifications, replacement procedures, and a results log table.
+
+**What to do:** Re-upload skill-04-interview-prep to replace the previous version. Add `quarterly-source-review.md` to the `skill-04-interview-prep/references/` folder. Your profile and pipeline are not affected. On your next compensation or salary law session the skill will run a source check automatically since no cache exists yet.
+
+---
+
+## May 26, 2026
+
+**Skill updated:** Interview Prep (skill-04-interview-prep)
+**Closes:** Issue #11
+
+**What changed:** Quarterly source review protocol added for compensation and salary law sources.
+
+Skill 04 uses eight compensation data sources and five salary law sources to generate offer benchmarking and jurisdiction-specific salary law guidance. These are live external sources that can become paywalled, restructured, or discontinued without any visible failure signal to the user. Previously there was no mechanism to detect or respond to source degradation.
+
+A quarterly review protocol has been added covering all thirteen sources. The protocol defines the review cadence (aligned to US fiscal quarters), verification criteria for each source, what constitutes a passing, degraded, or failed source, and what to do when a source changes status. The full protocol lives at `skill-04-interview-prep/references/quarterly-source-review.md`.
+
+The SKILL.md has been updated in two places. The salary law search section now includes a source health note instructing the skill to flag degraded sources to the user rather than silently skipping them. The offer negotiation compensation research section now includes the same instruction, with a reference to the protocol document for current source status.
+
+**What to do:** Re-upload skill-04-interview-prep to replace the previous version. Add `quarterly-source-review.md` to the `skill-04-interview-prep/references/` folder in your local installation. Create a recurring quarterly GitHub issue labeled `quarterly-review` and `skill-04` to trigger the review at the start of each quarter. Your profile and pipeline are not affected.
+
+---
+
+## May 26, 2026
+
 **Skill updated:** Resume Writer (skill-02-resume-writer)
 
 **What changed:** Five improvements based on real-world usage feedback.

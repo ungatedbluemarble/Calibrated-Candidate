@@ -129,6 +129,34 @@ The goal is to stay in the conversation without anchoring to a number prematurel
 
 Do not rely on static knowledge for salary history and expectation laws. These change as legislation evolves and vary by state and city. Always run a live search before generating compensation guidance.
 
+**Source health check: required on first use and quarterly thereafter.**
+
+Before running compensation or salary law research, check `source_health_cache` in the user profile.
+
+If `source_health_cache` is empty or does not exist, this is first use. Run a full source health check across all thirteen sources before proceeding. Write the results to `source_health_cache` with today's date as `last_checked`. Tell the user: "I am running a quick check on my data sources before generating your compensation guidance. This only happens on first use and once per quarter."
+
+If `source_health_cache` exists, check `last_checked`. Calculate whether 90 days have passed since that date. If yes, run a full source health check, update the cache, and note to the user that sources have been refreshed. If no, load the cached results and proceed.
+
+**What to cache in `source_health_cache`:**
+
+```json
+{
+  "last_checked": "ISO8601 date",
+  "next_check_due": "ISO8601 date 90 days forward",
+  "sources": [
+    {
+      "name": "",
+      "url": "",
+      "status": "passing | degraded | failed",
+      "note": "",
+      "checked_date": "ISO8601 date"
+    }
+  ]
+}
+```
+
+**What to do with the results:** If any source returns a degraded or failed status, note it to the user before generating compensation guidance: "One or more of my usual sources appears to have changed. I will use the remaining verified sources and flag where data may be thinner than usual." Do not silently skip a degraded source. See `/references/quarterly-source-review.md` for verification criteria and the full source list.
+
 **Search logic:**
 
 Step 1: Check `salary_law_cache` in the user profile.
@@ -315,7 +343,7 @@ Surface this guidance proactively in the Offer Negotiation guide under a section
 **Register:** Collaborative, not adversarial. You are aligning on a number that works for both sides.
 
 **Prep document sections:**
-1. Market compensation research: base, bonus, equity benchmarks for this role and location
+1. Market compensation research: base, bonus, equity benchmarks for this role and location. Use the sources listed in the README Compensation Research table. Before running research, verify each source returns usable data for this query. If a source has degraded or failed since the last quarterly review, skip it, note the gap to the user, and use the next available source. See `/references/quarterly-source-review.md` for current source status.
 2. Total compensation breakdown: how to evaluate the full package, not just base salary
 3. Negotiation strategy: when to push, when to accept, what to ask for beyond salary
 4. Scripts: word-for-word language for common negotiation scenarios
