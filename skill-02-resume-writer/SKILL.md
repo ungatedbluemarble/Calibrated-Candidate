@@ -24,6 +24,9 @@ These are non-negotiable for every document produced by this skill.
 - No buzzwords: passionate, driven, results-oriented, synergy, leverage (as a verb), utilize.
 - Write as if a sharp, confident professional wrote it themselves: not as if a template generated it.
 
+**Word economy: hard rule**
+Every sentence must earn its place. Cut any word that does not add meaning. Cut any sentence that repeats a point already made. The test for every bullet and every paragraph is: does removing this word change the meaning? If not, remove it. Long bullets signal insecurity. Short, dense bullets signal confidence. A bullet that runs more than two lines should be restructured or split.
+
 **Experience bullets**
 - Lead with an action verb, past tense for past roles, present tense for current.
 - One idea per bullet. No run-on bullets.
@@ -46,10 +49,13 @@ This rule applies to all output from this skill: resume bullets, cover letter cl
 
 **Cover letter**
 - Written in paragraph form. No bullets in the body.
-- Four to five paragraphs: opening hook, two body paragraphs, optional third body, close.
-- Opening must not start with "I am writing to apply for." Reference the role specifically and lead with relevance.
+- Four to five paragraphs: opening hook, why this company specifically, production evidence, optional third dimension, close.
+- Opening must not start with "I am writing to apply for." Do not open by announcing that you are a match. Open with what specifically about this company or role made you stop and pay attention. A good opener names something real about the company, the problem they are solving, or the language in the JD that resonated. A bad opener is any sentence the candidate could send to a different company without changing a word.
+- The letter must include at least one paragraph that is genuinely about the company and why it matters to the candidate. A letter that talks only about the candidate's accomplishments without explaining why this specific company is the target reads as a broadcast, not an application.
+- Never use insider jargon, regulatory acronyms, or technical abbreviations that a hiring manager outside the candidate's industry would not recognize. If a credential or framework needs naming, name it in plain language first.
 - Must read as written by a person, not assembled from parts.
 - No generic filler. Every sentence earns its place.
+- Tone check before finalizing: read the opening sentence. Would a confident person say this out loud to the hiring manager without it sounding like a claim about themselves? If not, rewrite it.
 
 See `/references/writing-examples.md` for structural examples derived from approved documents.
 
@@ -83,6 +89,19 @@ Do not hold the conversation hostage to document processing.
 ## Resume Structure
 
 Follow this structure exactly. Do not add sections not listed here unless the user explicitly requests them.
+
+**Page break control: required**
+
+When generating a Word document, always place an explicit page break before the Professional Experience section if the resume runs longer than one page. Never allow a section header or a job title to appear as the last element on a page with its content on the next. The page break must be intentional and placed so that page one ends with complete content and page two begins cleanly at a section header. Do not rely on Word's automatic pagination.
+
+**Context-aware section removal**
+
+Core Competencies is optional. Drop it when:
+- The target company is a startup or early-stage organization (under 500 employees, Series C or earlier, or described as a startup in the JD)
+- The JD emphasizes execution, speed, or low process overhead
+- Removing it allows page one to contain more high-impact project or experience content
+
+When dropping Core Competencies, move the most relevant technical tools and platforms into a single compact line at the bottom of the resume under Certifications and Additional. Do not lose the information, just compress it.
 
 ```
 [FULL NAME]
@@ -133,27 +152,30 @@ See `/references/resume-structure-example.md` for a complete annotated example.
 [Hiring contact or "Hiring Team, [Department]"]
 [Company Name]
 
-[Opening paragraph: 3 to 4 sentences]
-Lead with the role name and a direct statement of relevance.
-Not "I am writing to apply." Open with the connection between
-their work and the candidate's experience.
+[Opening paragraph: 2 to 3 sentences]
+Name something specific about the company, the problem they are solving,
+or the language in the JD that made you stop. Do not open with a claim
+about yourself. The reader should finish this paragraph knowing why you
+are interested in them, not why they should be interested in you.
 
-[Body paragraph 1: 4 to 6 sentences]
-Most relevant experience cluster. One specific accomplishment with
-numbers if available. Connect it explicitly to what the role requires.
+[Body paragraph 1: 4 to 5 sentences]
+Why this company specifically. What about their mission, product, market
+position, or moment in time draws you to this role rather than a similar
+role elsewhere. This paragraph must not be transferable to a different company.
 
-[Body paragraph 2: 4 to 6 sentences]
-Second experience cluster or cross-functional strength.
-Demonstrate breadth without losing specificity.
+[Body paragraph 2: 4 to 5 sentences]
+Most relevant production evidence. One to two specific accomplishments with
+numbers where available. Connect explicitly to what the role requires.
+Keep it tight. Do not list everything. Pick what is most relevant to this role.
 
-[Optional body paragraph 3]
-Governance, compliance, leadership, or any dimension the role
-specifically calls for that hasn't been addressed yet.
+[Optional body paragraph 3: 3 to 4 sentences]
+A second dimension the role specifically calls for that has not been addressed.
+Governance, compliance, cross-functional complexity, regulated environment
+experience, or any other requirement that deserves its own paragraph.
 
-[Closing paragraph: 3 to 4 sentences]
-Restate fit without restating the resume.
-Express genuine interest in a conversation.
-Close with a confident, non-groveling sign-off.
+[Closing paragraph: 2 to 3 sentences]
+Express genuine interest in a conversation. Close with confidence, not deference.
+Do not restate the resume. Do not thank them for their time in a way that sounds like groveling.
 
 Regards,
 
