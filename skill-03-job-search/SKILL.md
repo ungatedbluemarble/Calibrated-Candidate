@@ -62,6 +62,14 @@ Run this when the user provides a specific JD: via paste, URL, or cloud folder.
 
 **URL:** Fetch the page content and extract the job description. If the page blocks fetching, ask the user to paste the text.
 
+After fetching, validate that the role is actively accepting applications before proceeding. An active role has a functional apply button, an apply link, or an embedded application form. A closed role returns a page with the job description present but no apply mechanism, or a message indicating the role has been filled or removed.
+
+If the role is closed: do not evaluate it. Surface one line to the user: "The [Job Title] role at [Company] is no longer accepting applications. Skipping. Want me to search for similar active roles?" Then stop and wait for the user's response.
+
+If the role is active: proceed with the evaluation framework.
+
+If the apply status is ambiguous and cannot be determined from the page: proceed with the evaluation and note at the top of the output: "Note: active application status could not be confirmed for this role. Verify the apply link before submitting."
+
 **Cloud folder or local source:** If a cloud storage connector is active in the session (Google Drive, OneDrive, Dropbox, Box, SharePoint, or any other connected service), access the referenced folder and list the files. Ask the user which to evaluate, or if they request bulk review, process all files and return a ranked summary. If no connector is active, ask the user to upload files directly or paste the job description text into chat. Never tell the user a specific service is required: any connected source works.
 
 ### Evaluation Framework
@@ -103,12 +111,14 @@ What angle the candidate should lead with for this specific role. What to emphas
 
 When the user provides multiple job descriptions (folder or batch):
 
-1. Process each JD through the evaluation framework
-2. Return a ranked summary table: Role | Company | Fit Score | Key Strength | Key Gap | Recommendation
-3. Recommend the top two to three to prioritize
-4. Offer to go deep on any specific one
+1. Validate each role for active application status before evaluation. Apply the same validation logic as the URL input method above.
+2. Skip any role that is closed. Include a single line in the summary output for each skipped role: "[Job Title] at [Company]: no longer accepting applications. Skipped."
+3. Process only active roles through the evaluation framework.
+4. Return a ranked summary table of active roles only: Role | Company | Fit Score | Key Strength | Key Gap | Recommendation
+5. Recommend the top two to three to prioritize
+6. Offer to go deep on any specific one
 
-Do not produce full evaluations for every JD in bulk mode: return the summary first and drill on request.
+Do not produce full evaluations for every JD in bulk mode: return the summary first and drill on request. Closed roles do not appear in the ranked table.
 
 ---
 
