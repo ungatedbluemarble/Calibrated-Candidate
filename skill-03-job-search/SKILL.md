@@ -19,6 +19,8 @@ Match the user's background to the right industries and roles. Evaluate job desc
 - Never encourage a user to apply for a role they are not qualified for without flagging the gaps clearly.
 - Do not over-qualify candidates out of roles they can do. Conservative framing that undersells a candidate is as harmful as overselling.
 - When evaluating a JD, distinguish between hard requirements (must-have) and preferred qualifications (nice-to-have). Many candidates self-reject on preferred items: surface this distinction.
+- Never present a role found through proactive search to the user without first verifying it is open, remote-eligible (if applicable), and has a working application path. This applies to every role the skill surfaces, not just roles the user brings in.
+- When a proactive role search returns fewer confirmed open roles than requested, do not pad the list or tell the user to search on their own. Instead run the No Results Protocol before ending the search.
 
 ---
 
@@ -49,6 +51,71 @@ Recommend five to eight specific job titles the user should be searching for. Fo
 - What level (IC, manager, director, VP) they should be targeting based on experience
 
 Present findings in a structured format the user can act on immediately.
+
+### Step 4: Proactive Role Validation
+
+When specific open roles are identified and surfaced to the user, each role must pass three checks before it is presented.
+
+**Check 1: Confirm the role is open.** Fetch the direct job posting URL. Confirm the page returns an active posting with an apply button or open application status. If the page 404s, redirects to a general careers page, or shows "no longer accepting applications," the role is closed. Remove it and find a replacement. Do not disclose closed roles to the user.
+
+**Check 2: Confirm remote eligibility.** Extract the location and remote status from the posting text. If the role requires on-site or hybrid attendance inconsistent with the user's location constraints, remove it. If remote status is ambiguous, include a note: "Remote eligibility not confirmed. Verify before applying." Never describe a role as remote unless the posting explicitly states it.
+
+**Check 3: Confirm the application path.** Extract the direct application URL from the posting. If it resolves to an active form, present it. If only a general careers page can be confirmed, tell the user: "Apply via [Company] careers site by searching [Role Title]." Do not fabricate direct links.
+
+If fewer roles pass validation than the target number, run the No Results Protocol below before presenting results to the user.
+
+---
+
+## No Results Protocol
+
+Run this whenever a proactive role search fails to surface the minimum number of confirmed open roles that match the user's stated criteria. Do not tell the user to search on their own. Do not end the session. Do not pad the list with unverified roles. Follow these steps in order.
+
+### Step 1: Disclose what was found
+
+Tell the user honestly and briefly: "I confirmed [N] active roles that match your criteria. I could not verify enough to give you a full list."
+
+If N is zero, say: "I was not able to confirm any currently open roles that match all of your criteria."
+
+Do not explain the search mechanics or apologize at length. One sentence is enough.
+
+### Step 2: Diagnose the constraint
+
+Identify which criteria are most likely narrowing the field. Common culprits in order of likelihood:
+
+- Compensation floor is above market rate for the role type and seniority level
+- Remote requirement eliminates most available roles in this category
+- IC-only constraint eliminates roles that blend IC and people leadership
+- Title or function is too narrowly defined and equivalent roles use different titles
+- Industry target is too specific
+
+Do not guess. Pull from what the search actually returned: if roles appeared but were above the comp floor, say so. If roles appeared but required on-site, say so.
+
+### Step 3: Ask one targeted question
+
+Ask the user a single question that addresses the most likely constraint. Frame it as a choice, not an open-ended question. Examples:
+
+If comp is the likely constraint:
+> "The roles I found in this space are mostly ranging from [X] to [Y]. Your current floor is [Z]. Would you like me to search at [lower floor] to see what opens up, or keep the floor and I will keep looking?"
+
+If remote is the likely constraint:
+> "Most confirmed open roles in this category are hybrid rather than fully remote. Would you like me to include hybrid roles with [N] days in-office, or keep the search remote-only?"
+
+If IC-only is the likely constraint:
+> "Several roles I found blend IC work with light team oversight. Would you like me to include roles where people leadership is a minor component, or keep the search to pure IC?"
+
+If title is too narrow:
+> "This exact title is not posting frequently right now. Would you like me to search under related titles like [X], [Y], or [Z]?"
+
+### Step 4: Wait for the user's answer
+
+Do not assume. Do not run a new search until the user responds. When the user adjusts a constraint, run a new validated search immediately using the updated parameters.
+
+### Step 5: If all constraints are adjusted and results are still insufficient
+
+After two rounds of constraint adjustment with no confirmed results, tell the user:
+> "The market for this combination of role, comp, and location appears limited right now. I can set up a watch for new postings and check again in [timeframe], or we can shift strategy to direct outreach at companies where you have existing relationships. Which would you prefer?"
+
+Then route based on their answer. Do not abandon the user or tell them the search is complete when it is not.
 
 ---
 
