@@ -2,6 +2,24 @@
 
 ---
 
+## May 29, 2026
+
+**Skill updated:** Job Search (skill-03-job-search)
+
+**What changed:** Proactive Role Validation hardened against stale and closed postings.
+
+The previous validation logic treated a rendered job description with a visible apply button as sufficient proof that a role was open. Applicant tracking systems and aggregators routinely keep serving the full description and a non-functional apply control after a requisition closes, so this produced a false positive: a closed JD Power role was presented as open because the fetched ATS page returned an active-looking description, and a follow-up aggregator link carrying a plain "this job has closed" flag was passed to the user without the flag being caught.
+
+Check 1 now treats the body of a posting as untrusted for open/closed status and requires three steps before a role is scored open: a full-page closed-signal scan (any closed signal anywhere on the page closes the role, regardless of the JD body), an age heuristic (postings older than roughly 45 days in fast-moving categories are presumed closed absent an explicit open indicator), and a source-trust ranking (company ATS over aggregators). A new conflict rule states that closed always wins when any signal conflicts.
+
+A new Check 4 requires a per-role confirmation line disclosing what was actually verified and how (confirmed open via company ATS versus not independently confirmed via aggregator only), plus remote status, posting age, and check date, so validation is never presented as more certain than it is.
+
+Bulk-mode JD evaluation now points explicitly at the full four-check process rather than referring to it loosely.
+
+**What to do:** Re-upload skill-03-job-search to replace the previous version. No profile or pipeline impact.
+
+---
+
 ## May 26, 2026
 
 **Skill updated:** Interview Prep (skill-04-interview-prep)

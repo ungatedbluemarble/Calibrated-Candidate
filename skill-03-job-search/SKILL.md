@@ -56,11 +56,25 @@ Present findings in a structured format the user can act on immediately.
 
 When specific open roles are identified and surfaced to the user, each role must pass three checks before it is presented.
 
-**Check 1: Confirm the role is open.** Fetch the direct job posting URL. Confirm the page returns an active posting with an apply button or open application status. If the page 404s, redirects to a general careers page, or shows "no longer accepting applications," the role is closed. Remove it and find a replacement. Do not disclose closed roles to the user.
+**Check 1: Confirm the role is open.** Fetch the direct job posting URL. A rendered job description with a visible apply button is NOT by itself proof that a role is open. Applicant tracking systems (Workday, Greenhouse, Lever, iCIMS) and aggregators (Built In, Jobright, LinkedIn, Indeed, ZipRecruiter, RemoteRocketship) routinely keep serving the full description and a non-functional apply control after the requisition has closed. Treat the body of a posting as untrusted for open/closed status. Confirm open status by running all three steps below before presenting any role.
+
+1. Scan the entire page for closed signals, not just the job-description body. Closed signals include, in any casing or location on the page: "this job has closed," "no longer accepting applications," "this position has been filled," "this job was removed," "applications are closed," "position closed," "no longer available," a greyed-out or absent apply control, or a redirect to a general careers landing page. A single closed signal anywhere on the page means the role is closed, even if the job-description body still reads as active and an apply button is still visible.
+
+2. Apply the age heuristic. Find the posting date or "posted N days/months ago" indicator. In AI enablement and comparable fast-moving categories, a posting older than roughly 45 days is presumed closed unless an explicit open indicator (active dated application window, "still accepting applications," a confirmed-working apply form) proves otherwise. State the posting age to yourself before scoring the role.
+
+3. Rank source trust. The company's own ATS or careers page is the highest-trust source for open status. Aggregators are lower trust and frequently stale. When possible, confirm open status on the company's own ATS rather than on an aggregator. If only an aggregator can be reached, lower your confidence accordingly and say so in the confirmation line (Check 4).
+
+**Conflict rule: closed always wins.** If any source or any element of a page indicates the role is closed while another indicates it is open, treat the role as closed. Do not present a role on the strength of an active-looking JD body when a closed flag is present elsewhere. Remove closed roles and find a replacement. Do not disclose closed roles to the user.
 
 **Check 2: Confirm remote eligibility.** Extract the location and remote status from the posting text. If the role requires on-site or hybrid attendance inconsistent with the user's location constraints, remove it. If remote status is ambiguous, include a note: "Remote eligibility not confirmed. Verify before applying." Never describe a role as remote unless the posting explicitly states it.
 
 **Check 3: Confirm the application path.** Extract the direct application URL from the posting. If it resolves to an active form, present it. If only a general careers page can be confirmed, tell the user: "Apply via [Company] careers site by searching [Role Title]." Do not fabricate direct links.
+
+**Check 4: Disclose what was actually confirmed.** Validation that depends on fetching live pages is fragile: pages cache, redirect, block automated access, and go stale. Do not present validation as more certain than it is. For every role surfaced, include a one-line confirmation stating what was verified and how, so the user can judge the freshness for themselves. Use this format:
+
+> Verified: [open status: confirmed open via active apply form on company ATS / open status not independently confirmed, aggregator only] | [remote status] | [posting age] | checked [date].
+
+If open status could not be confirmed on the company's own ATS, say so plainly in this line rather than implying certainty. A role whose open status rests only on an aggregator must carry the words "not independently confirmed" so the user verifies before investing time.
 
 If fewer roles pass validation than the target number, run the No Results Protocol below before presenting results to the user.
 
@@ -178,7 +192,7 @@ What angle the candidate should lead with for this specific role. What to emphas
 
 When the user provides multiple job descriptions (folder or batch):
 
-1. Validate each role for active application status before evaluation. Apply the same validation logic as the URL input method above.
+1. Validate each role using the full four-check process in Step 4: Proactive Role Validation above, including the closed-signal scan, the age heuristic, the source-trust ranking, and the closed-always-wins conflict rule. A rendered JD with a visible apply button is not proof the role is open.
 2. Skip any role that is closed. Include a single line in the summary output for each skipped role: "[Job Title] at [Company]: no longer accepting applications. Skipped."
 3. Process only active roles through the evaluation framework.
 4. Return a ranked summary table of active roles only: Role | Company | Fit Score | Key Strength | Key Gap | Recommendation
