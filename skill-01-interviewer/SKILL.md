@@ -52,6 +52,15 @@ Collect:
 - Two or three roles they consider most relevant to where they are heading
 - Ask them to describe what they are actually good at in their work: not a list of skills, but what outcomes they produce
 
+For each relevant role, capture the accomplishments as structured bullet records per the experience bullet object in `/references/user-profile-schema.md`. For every bullet:
+- Assign a stable `id` in the form `E{role}-B{bullet}`.
+- Record the accomplishment in `text`.
+- Tag the discrete skills it evidences in `skills`.
+- If the user states a number, put it in `metric` and set `metric_verified` to true, because the user just confirmed it. If no number is offered, leave `metric` null. Never infer or estimate a number.
+- Leave `evidence_strength` empty at intake. Skill 02 assigns it during the resume pass.
+
+Do not push for metrics that do not exist. A bullet with no number is fine and stays null. The point of capturing structure now is so the resume and job-search skills inherit addressable evidence instead of re-parsing prose later.
+
 ### 5. Strengths
 Ask the user to name three to five genuine strengths. Follow up with: "Can you give me a specific example of one of those in action?" Capture both the claim and the example.
 

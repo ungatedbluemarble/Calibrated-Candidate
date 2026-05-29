@@ -4,6 +4,31 @@
 
 ## May 29, 2026
 
+**Schema updated:** Shared User Profile (all skills)
+**Skills updated:** Interviewer (skill-01-interviewer), Resume Writer (skill-02-resume-writer), Job Search (skill-03-job-search)
+
+**What changed:** Experience bullets promoted from plain text to structured evidence records, and the no-invented-numbers rule moved into the profile data itself.
+
+Previously each entry in `experience[].bullets` was a bare string. A string cannot be referenced, scored, or traced, so every skill that needed to reason about a specific accomplishment had to re-read the prose and re-derive its judgment each time. There was no shared, durable record of which bullets a candidate could actually defend in an interview, and the no-invented-numbers rule lived only as writing guidance in Skill 02 rather than as a fact carried in the profile.
+
+Each bullet is now a structured object with a stable `id` (in the form `E{role}-B{bullet}`), the bullet `text`, a `skills` array of the competencies it evidences, a `metric` field for any quantified result, a `metric_verified` boolean, and an `evidence_strength` rating of `defensible`, `soft`, or `unverified`. This makes every accomplishment individually addressable across the pipeline: a bullet can be discussed, reordered, or mapped to a job requirement by ID rather than by re-quoting it, and the candidate's ability to defend each claim is recorded once and reused everywhere.
+
+The schema is now version 1.1. The only change from 1.0 is the bullet shape. A lossless migration rule runs at profile load: if a bullet is still a string, it is wrapped into the new object with the original text preserved verbatim and the remaining fields defaulted, then the version is bumped. No saved 1.0 profile breaks, and skills that read only the bullet text continue to work unchanged against both versions.
+
+Skill 01 now captures the structured bullet fields at intake, so a candidate who interviews before uploading a resume still produces addressable evidence. When the user states a number in conversation it is recorded as verified, because the user just confirmed it; numbers are never inferred or estimated.
+
+Skill 02 now records `evidence_strength` and `metric_verified` on every bullet during parsing and tailoring. This is the same no-invented-numbers rule as before, now written into the profile so the rest of the pipeline inherits the judgment instead of re-deriving it. A bullet rated `unverified` is never promoted into a tailored resume or led with in positioning until the user confirms it, and any strong bullet held back for this reason is surfaced in the existing "Numbers needed" section.
+
+Skill 03 now maps job description requirements against the per-bullet `skills` tags and scores fit by evidence strength. A requirement is marked Met only when a `defensible` bullet covers it; a requirement backed only by a `soft` or `unverified` bullet is Partial at best, and the gaps section notes what the candidate would need to confirm to make it defensible. Unverified bullets are never used to clear a hard requirement.
+
+Skills 04, 05, and 06 consume the profile but did not need instruction changes. They receive the updated schema file so all skills share one version of the contract.
+
+**What to do:** Replace `user-profile-schema.md` in all seven locations: `shared/` and each `skill-NN/references/` folder. Re-upload skill-01-interviewer, skill-02-resume-writer, and skill-03-job-search to replace the previous versions. Skills 04, 05, and 06 need only the replaced schema file in their reference folders. Existing saved profiles are migrated automatically on next load; you do not need to edit any profile by hand.
+
+---
+
+## May 29, 2026
+
 **Skill updated:** Job Search (skill-03-job-search)
 
 **What changed:** Proactive Role Validation hardened against stale and closed postings.

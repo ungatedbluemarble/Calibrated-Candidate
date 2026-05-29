@@ -35,7 +35,9 @@ Pull from the user profile (Skill 01):
 - `search_status.target_industries`
 - `search_status.target_roles`
 - `strengths`
-- `experience` (titles and domains)
+- `experience` (titles, domains, and the `skills` and `evidence_strength` on each bullet)
+
+When matching the profile to a role, use the per-bullet `skills` tags to map JD requirements to specific evidence, and weight `defensible` bullets above `soft` ones. Treat `unverified` bullets as unproven: do not rely on them to clear a hard requirement.
 
 ### Step 2: Industry Fit Analysis
 Based on the profile, identify three to five industries where the user's background transfers well. For each:
@@ -169,6 +171,8 @@ Two-column table:
 | Requirement | Candidate Status |
 |---|---|
 | [Requirement from JD] | Met / Partial / Gap |
+
+Map each requirement to the bullet evidence that supports it using the per-bullet `skills` tags. Mark a requirement Met only when a `defensible` bullet covers it. A requirement covered only by a `soft` or `unverified` bullet is Partial at best, and the gaps section should note what the candidate would need to confirm to make it defensible.
 
 Distinguish hard requirements from preferred. Candidates frequently self-reject on preferred items: flag this explicitly.
 

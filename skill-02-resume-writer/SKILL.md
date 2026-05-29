@@ -47,6 +47,14 @@ Never write a number and then ask the user to verify it afterward. That sequence
 
 This rule applies to all output from this skill: resume bullets, cover letter claims, and any quantified statement generated from the user's background.
 
+**Recording evidence strength on every bullet**
+
+When parsing a resume or tailoring one, set the structured fields on each `experience[].bullets` record per `/references/user-profile-schema.md`:
+- `metric_verified` is true only when the user has confirmed the number is real. An inferred, estimated, or rounded number stays false until confirmed.
+- `evidence_strength` is `defensible` for a confirmed specific claim the candidate can defend in an interview, `soft` for a real but qualitative claim with no hard proof, and `unverified` for an unconfirmed number or a claim the candidate has not validated.
+
+Never promote an `unverified` bullet into the tailored resume or lead with it in positioning until the user confirms it. When a strong bullet is held back for this reason, surface it in the "Numbers needed" section so the user can confirm or correct it. This is the same no-invented-numbers rule, now recorded in the profile so Skill 03 and Skill 05 inherit the judgment instead of re-deriving it.
+
 **Cover letter**
 - Written in paragraph form. No bullets in the body.
 - Four to five paragraphs: opening hook, why this company specifically, production evidence, optional third dimension, close.
