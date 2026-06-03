@@ -157,15 +157,23 @@ To connect a service, go to Claude settings and enable the relevant connector un
 
 ---
 
+## Document Handling
+
 You can feed your resume and other career documents to this package from any source:
 
 - **Direct upload**: drag and drop a file into the Claude chat window
 - **Copy and paste**: paste the text of a resume, job description, or any other document directly into chat
 - **Cloud storage**: if you have a cloud storage connector enabled in Claude (Google Drive, OneDrive, Dropbox, Box, SharePoint, or any other connected service), you can reference files stored there directly
 - **Local files**: in Claude Code or Claude Desktop, you can reference files stored anywhere on your computer
-- **Any format**: PDF, Word (.docx), plain text (.txt), or pasted text all work
+- **Any format**: PDF, Word (.docx), plain text (.txt), images of a document, or pasted text all work
 
 The skills do not require any specific cloud service. Whatever document source you have access to works.
+
+**What happens when you upload.** When you give the Resume Writer a document, it runs the file through an extraction step that turns it into clean text before doing anything else. This matters because real resumes are messy: a clean PDF, a two-column layout with a skills table, a scan of a printed page, and a photo taken on your phone are all read differently under the hood. The extraction step picks the right method for each, falls back to reading scans and images with OCR (text recognition) when there is no text layer to pull, and asks you to paste your text only if a file genuinely cannot be read. You do not configure any of this. You upload, the skill confirms what it found, and you correct it if anything looks off.
+
+**Your document is remembered.** Once a document is read successfully, the result is stored in your profile alongside how it was read and when. If you save your profile and reload it later, the other skills reuse that stored copy instead of re-reading the original file every session. Each document is tracked on its own, so refreshing your resume does not disturb a cover letter or job description you handled earlier.
+
+**One limitation worth knowing.** Text recognition on scans and images supports English only. If you upload a scanned or photographed document with substantial non-English content, some of it may not be captured. The skill flags this and offers to let you paste the text instead, which avoids the issue entirely.
 
 ---
 
@@ -259,7 +267,7 @@ If you are outside the United States, the skill runs a country and city-specific
 
 ## A Note on the Shared Profile Schema
 
-The user profile schema (`user-profile-schema.md`) is intentionally duplicated into the `references/` folder of each skill. This is required because each skill is installed as a separate zip file in Claude and cannot access files outside its own folder. When the schema changes, update all six copies. The `shared/` folder at the repo root is the source of truth, copy from there.
+The user profile schema (`user-profile-schema.md`) is intentionally duplicated into the `references/` folder of each skill. This is required because each skill is installed as a separate zip file in Claude and cannot access files outside its own folder. There are seven copies in total: the `shared/` folder at the repo root, which is the source of truth, plus one in each of the six skill `references/` folders. When the schema changes, update all seven copies, copying from `shared/`.
 
 ---
 
@@ -319,7 +327,10 @@ Continue as needed through panel, final round, and offer negotiation.
 Make sure Code Execution is enabled in Settings > Capabilities. Skills will not load without it.
 
 **Document upload is not working**
-Any file format Claude supports works: PDF, Word, or plain text. If a file fails to upload, paste the text directly into chat instead.
+Any file format Claude supports works: PDF, Word, images, or plain text. If a file fails to upload or the skill says it could not read it, paste the text directly into chat instead. That path always works.
+
+**The skill says document tools are not available**
+This can happen in a Claude Code local session if the extraction libraries are not installed in that environment. The skill will tell you in plain language and ask you to paste your resume text instead, which works without any setup. This does not affect Claude.ai or Claude Desktop, where the tools are always available.
 
 **Session ran out of context**
 Say "save my profile" before the session ends. Upload the saved file in a new session to continue without losing your work.
