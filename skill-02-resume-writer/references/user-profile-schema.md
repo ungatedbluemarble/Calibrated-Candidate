@@ -9,7 +9,7 @@ This schema defines the canonical user profile object built by Skill 01 and cons
 
 ```json
 {
-  "profile_version": "1.1",
+  "profile_version": "1.2",
   "created_at": "ISO8601 timestamp",
   "updated_at": "ISO8601 timestamp",
 
@@ -96,6 +96,24 @@ This schema defines the canonical user profile object built by Skill 01 and cons
     "cover_letter_on_file": false
   },
 
+  "extracted_documents": {
+    "source_resume": {
+      "markdown": "",
+      "extraction_method": "",
+      "extracted_at": ""
+    },
+    "source_cover_letter": {
+      "markdown": "",
+      "extraction_method": "",
+      "extracted_at": ""
+    },
+    "source_jd_skill02": {
+      "markdown": "",
+      "extraction_method": "",
+      "extracted_at": ""
+    }
+  },
+
   "connectors": {
     "email": {
       "connected": false,
@@ -166,11 +184,37 @@ A bullet whose `evidence_strength` is `unverified` must not be promoted to a tai
 
 ---
 
+## Extracted Documents Object
+
+`extracted_documents` holds clean Markdown extracted from uploaded resumes, cover letters, and job descriptions. Skill 02 writes it after normalizing any uploaded file through the extraction pipeline. Downstream skills read the cached Markdown instead of re-processing the original file.
+
+Each document is a separate object with three fields:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `markdown` | string | The normalized Markdown extracted from the document. Empty until a successful extraction. |
+| `extraction_method` | string | Which path produced the text: `markitdown`, `docx_native`, `ocr_rasterized`, `ocr_direct`, or `user_paste`. Supports failure diagnosis: a cluster of `user_paste` is a signal the automated path is degrading. |
+| `extracted_at` | string | ISO 8601 timestamp of the extraction. Per document, not per session. Each document ages on its own clock, so refreshing one does not make the others look stale. |
+
+**Relationship to the `documents` block, and the anti-drift rule:**
+
+The older `documents` block tracks whether a resume exists and where. `extracted_documents` holds what was actually read from it. These two blocks describe the same underlying files and can fall out of sync if updated independently. To prevent drift, any skill that writes `extracted_documents.source_resume` with a successful extraction MUST set `documents.resume_uploaded` to `true` in the same write. Likewise, a successful write to `source_cover_letter` MUST set `documents.cover_letter_on_file` to `true`. The two blocks are always updated together, never separately.
+
+**Scope of `source_jd_skill02`:**
+
+This field is intentionally scoped to Skill 02 tailoring use only. It holds the single job description the resume is being tailored against. Skills 03 and 04 manage their own job description storage in a separate `job_descriptions` array introduced in a later phase. The `_skill02` suffix is deliberate and prevents ownership conflicts between the two. It is not a temporary name.
+
+---
+
 ## Version and Migration
 
-Current schema version: `1.1`.
+Current schema version: `1.2`.
 
-The only change from `1.0` is the shape of `experience[].bullets`. In `1.0`, each bullet was a plain string. In `1.1`, each bullet is an object. Every other field is unchanged.
+The schema has evolved in two non-destructive steps. `1.0` to `1.1` changed the shape of `experience[].bullets` from a plain string to a structured object. `1.1` to `1.2` added the `extracted_documents` block. Every other field has remained unchanged across all three versions.
+
+**1.1 to 1.2:** A profile that lacks the `extracted_documents` block is pre-1.2. On first write, any skill initializes `extracted_documents` with the three empty document objects shown above. No existing field changes, and a profile with no extracted documents behaves exactly as before. Skills that do not consume extracted documents are unaffected.
+
+**1.0 to 1.1:** In `1.0`, each entry in `experience[].bullets` was a plain string. In `1.1`, each is an object.
 
 **Migration rule, applied at profile load by any skill:**
 
@@ -211,6 +255,7 @@ On subsequent sessions, the user uploads or references this file and any skill c
 | education, certifications | Skill 01 (interview) or Skill 02 (resume parse) |
 | salary_law_cache | Skill 04: Interview Prep (auto-updated on first use and each US fiscal quarter) |
 | documents | Skill 02: Resume Writer |
+| extracted_documents | Skill 02: Resume Writer (written after the extraction pipeline normalizes an uploaded file; updated atomically with the `documents` block per the anti-drift rule) |
 | interview_history (including recruiter_email) | Skill 04: Interview Prep (also collected by Skill 01 during connector onboarding for active processes) |
 | connectors | Skill 01: Interviewer (connector onboarding step) |
 
@@ -219,7 +264,7 @@ On subsequent sessions, the user uploads or references this file and any skill c
 ## Minimal Context Slices Per Skill
 
 **Skill 02: Resume Writer**
-Needs: `identity`, `background`, `experience` (full bullet objects), `education`, `certifications`, `documents`
+Needs: `identity`, `background`, `experience` (full bullet objects), `education`, `certifications`, `documents`, `extracted_documents`
 
 **Skill 03: Job Search Expert**
 Needs: `background`, `strengths`, `weaknesses`, `search_status`, `experience` (titles, domains, and bullet `skills` plus `evidence_strength`)
