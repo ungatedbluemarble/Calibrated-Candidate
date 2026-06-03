@@ -66,7 +66,13 @@ When specific open roles are identified and surfaced to the user, each role must
 
 3. Rank source trust. The company's own ATS or careers page is the highest-trust source for open status. Aggregators are lower trust and frequently stale. When possible, confirm open status on the company's own ATS rather than on an aggregator. If only an aggregator can be reached, lower your confidence accordingly and say so in the confirmation line (Check 4).
 
-**Conflict rule: closed always wins.** If any source or any element of a page indicates the role is closed while another indicates it is open, treat the role as closed. Do not present a role on the strength of an active-looking JD body when a closed flag is present elsewhere. Remove closed roles and find a replacement. Do not disclose closed roles to the user.
+4. Do not treat a successful fetch as proof of open status on JS-rendered ATS platforms. On Workday (myworkdayjobs.com), Oracle/iCIMS, Greenhouse, Lever, and SmartRecruiters, an automated fetch of a direct job URL routinely returns the full job description (HTTP 200 with JD body) even after the requisition has been closed, unpublished, or access-restricted. The true open/closed state lives in the careers-component response (often HTTP 403 "permission denied" or 404), which an automated fetch does not surface but which appears in a real browser. Therefore: a fetched JD body, no matter how complete, is NEVER sufficient to mark a role open on these platforms.
+
+5. Confirm open status only by one of these authoritative signals: (a) the requisition appears in the company's own careers-page keyword search results, or (b) the user or their browser confirms the live apply page resolves without a 403/404 on the careers component. A component-level 403 or 404 observed in-browser, or absence of the req from the company's own careers search, overrides any fetched JD content and means the role is closed or not publicly accessible.
+
+6. When neither authoritative signal in step 5 is available, do not mark the role validated. Label it "open status not independently confirmable, verify the live apply link before investing," and present it only with that caveat, never as confirmed.
+
+**Conflict rule: closed always wins.** If any source or any element of a page indicates the role is closed while another indicates it is open, treat the role as closed. This explicitly includes the case where a fetched JD body reads as active (HTTP 200 with full content) but the careers component returns 403 or 404 in a browser, or the req is absent from the company's own careers search: the closed/inaccessible signal wins over the cached JD body. Do not present a role on the strength of an active-looking JD body when a closed flag is present elsewhere. Remove closed roles and find a replacement. Do not disclose closed roles to the user.
 
 **Check 2: Confirm remote eligibility.** Extract the location and remote status from the posting text. If the role requires on-site or hybrid attendance inconsistent with the user's location constraints, remove it. If remote status is ambiguous, include a note: "Remote eligibility not confirmed. Verify before applying." Never describe a role as remote unless the posting explicitly states it.
 
@@ -74,9 +80,9 @@ When specific open roles are identified and surfaced to the user, each role must
 
 **Check 4: Disclose what was actually confirmed.** Validation that depends on fetching live pages is fragile: pages cache, redirect, block automated access, and go stale. Do not present validation as more certain than it is. For every role surfaced, include a one-line confirmation stating what was verified and how, so the user can judge the freshness for themselves. Use this format:
 
-> Verified: [open status: confirmed open via active apply form on company ATS / open status not independently confirmed, aggregator only] | [remote status] | [posting age] | checked [date].
+> Verified: [open status: confirmed open via company careers-search / confirmed open via live apply page resolving in browser / open status not independently confirmable, JD body fetched but careers component not verified / open status not independently confirmed, aggregator only] | [remote status] | [posting age] | checked [date].
 
-If open status could not be confirmed on the company's own ATS, say so plainly in this line rather than implying certainty. A role whose open status rests only on an aggregator must carry the words "not independently confirmed" so the user verifies before investing time.
+If open status could not be confirmed on the company's own ATS, say so plainly in this line rather than implying certainty. A role whose open status rests only on an aggregator, or only on a fetched JD body without careers-search or browser confirmation, must carry "not independently confirmable" so the user verifies before investing time. Never write "confirmed open" on the strength of a fetched JD body alone on a JS-rendered ATS platform.
 
 If fewer roles pass validation than the target number, run the No Results Protocol below before presenting results to the user.
 
