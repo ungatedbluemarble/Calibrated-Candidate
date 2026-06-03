@@ -69,28 +69,48 @@ See `/references/writing-examples.md` for structural examples derived from appro
 
 ---
 
-## Document Inputs
+## Document Inputs and Extraction Pipeline
 
-The skill accepts resume content from three sources, in order of preference:
+The skill accepts resume, cover letter, and job description content from three sources, in order of preference:
 
-1. **Uploaded file**: User uploads their current resume (PDF, DOCX, or TXT). Parse and extract all content. Confirm extracted data before proceeding.
-
-2. **Cloud-connected storage**: User references a file in Google Drive, OneDrive, or Box. If a connector is active in the session, fetch the file. If not, prompt the user to upload directly or enable the connector.
-
+1. **Uploaded file**: User uploads a document (PDF, DOCX, TXT, PNG, JPG).
+2. **Cloud-connected storage**: User references a file in Google Drive, OneDrive, or Box. If a connector is active, fetch the file. If not, prompt the user to upload directly or enable the connector.
 3. **User profile**: If no document is available, use the experience captured in the profile from Skill 01. Flag to the user that the resume will be built from their intake answers and ask them to fill any gaps.
 
----
+**On receiving any uploaded or cloud-fetched document, run the extraction pipeline before doing anything else.** The pipeline lives at `scripts/extract.py`. It normalizes the document into clean Markdown and returns a structured result. Do not parse documents by hand or read raw file bytes into the conversation. Always route through the script.
 
-## Async Document Handling
+### Running the pipeline
 
-Document parsing is token-heavy. To prevent blocking the session:
+Call `extract.extract(path)` from `scripts/extract.py`. It returns a dictionary with `markdown`, `extraction_method`, `extracted_at`, `ok`, `message`, and `char_count`. The method chain is markitdown for PDFs, python-docx for Word files (with markitdown preferred first when its DOCX support is present), OCR for scanned PDFs and images, and a user-paste fallback for anything unreadable. The script never raises to you: a failure comes back as `ok: false` with a plain-language `message`. Surface that message to the user; never show a traceback or a library name.
 
-1. Acknowledge receipt immediately: "I have your resume. I'm processing it now: feel free to tell me about the role you're targeting while I work."
-2. Parse in the background while the user provides additional context (target role, JD, tone preferences).
-3. Confirm extracted content with the user before writing begins.
-4. If parsing fails or produces incomplete output, surface the gaps and ask the user to fill them conversationally.
+### Environment check, once per session
+
+Before the first extraction in a session, call `extract.check_environment()`. It returns any missing libraries and whether Tesseract is available. If a required library is missing (for example in a Claude Code local session), tell the user in plain language and route them to paste their text directly: "The document tools are not available in this environment. Please paste your resume text and I will continue from there." Run this check once per session, not per file.
+
+### Acknowledge, then keep talking
+
+Document processing should never block the conversation.
+
+1. Acknowledge receipt immediately: "I have your file. Running extraction now to normalize it for your search. Tell me about the role you are targeting while I work."
+2. Run the pipeline while the user provides context (target role, JD, tone).
+3. After extraction, show a compact confirmation: the name detected, the most recent role, roughly how many roles were found, and any section that may have been missed. Ask the user to confirm accuracy before drafting.
+4. If extraction used OCR, tell the user accuracy may vary and ask them to check the flagged sections.
 
 Do not hold the conversation hostage to document processing.
+
+### Writing the result to the profile
+
+After a successful extraction, write the result to `extracted_documents` in the user profile, then prompt the user to save their profile so the cache persists to future sessions.
+
+**Atomic write, required to prevent drift.** A write to `extracted_documents` and the corresponding flag in the `documents` block must happen together, never separately. When you write `extracted_documents.source_resume` with a successful extraction, set `documents.resume_uploaded` to `true` in the same write. When you write `source_cover_letter`, set `documents.cover_letter_on_file` to `true` in the same write. The two blocks describe the same files and must always agree. See `/references/user-profile-schema.md` for the full rule.
+
+**Overwrite confirmation.** If a prior extraction already exists for the same document, confirm before replacing it: "I already have your resume from [extracted_at]. Do you want to replace it with this new file?" Do not overwrite silently.
+
+**Record the method.** `extraction_method` is written exactly as the script returns it: `markitdown`, `docx_native`, `ocr_rasterized`, `ocr_direct`, or `user_paste`. A cluster of `user_paste` across documents is a signal the automated path is degrading and worth surfacing.
+
+### Known limitation
+
+OCR in the hosted environment supports English only. Non-English sections of a scanned or image-based document may be missed silently. If a user uploads a document you suspect contains substantial non-English content as an image or scan, tell them OCR may not capture it and offer the paste fallback.
 
 ---
 

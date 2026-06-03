@@ -2,6 +2,30 @@
 
 ---
 
+## June 2, 2026
+
+**Schema updated:** Shared User Profile (all skills), now version 1.2
+**Skill updated:** Resume Writer (skill-02-resume-writer)
+**Added:** Document extraction pipeline (`skill-02-resume-writer/scripts/extract.py`)
+
+**What changed:** Uploaded documents are now normalized into clean Markdown by a dedicated extraction pipeline before they enter the conversation, and the result is cached in the profile so the rest of the package can reuse it.
+
+Previously, when a user uploaded a resume, cover letter, or job description, the raw extracted text went straight into the conversation with no normalization. A clean PDF, a scanned document, and a phone screenshot were all treated the same way, and there was no record of how reliably each one was read. Nothing was cached, so every session that needed the document re-processed it from scratch.
+
+Skill 02 now routes every uploaded or cloud-fetched document through `scripts/extract.py`. The pipeline reads PDFs with markitdown, Word files with python-docx (preferring markitdown's richer table output when its DOCX support is present), scanned PDFs and images through OCR, and falls back to asking the user to paste text when a file cannot be read. The script never surfaces a technical error to the user: a failure returns a plain-language message and routes to the next method in the chain. Word files are read with python-docx directly rather than depending on an optional markitdown component, so two-column resumes with skills tables read reliably regardless of how the environment was set up.
+
+The extracted result is written to a new `extracted_documents` block in the profile, with each document carrying its own `markdown`, the method used to read it, and a timestamp. Because each document is timestamped on its own, refreshing one does not make the others look stale. To keep the new block consistent with the existing `documents` block, a successful resume extraction sets `documents.resume_uploaded` to true in the same write, and a cover letter extraction sets `cover_letter_on_file` to true in the same write. The two blocks are always updated together.
+
+The schema is now version 1.2. The only change from 1.1 is the addition of `extracted_documents`. A profile that lacks the block is treated as pre-1.2 and the block is created empty on first write. No saved profile breaks, and skills that do not use the block are unaffected.
+
+**Known limitation:** OCR in the hosted environment supports English only. Non-English sections of a scanned or image-based document may be missed. The skill flags this to the user and offers the paste fallback.
+
+**Note on Skill 01:** The Interviewer skill can also accept a resume during onboarding and still parses it the older way. Aligning Skill 01 with this pipeline is tracked as a separate follow-up and is not part of this change.
+
+**What to do:** Replace `user-profile-schema.md` in all seven locations: `shared/` and each `skill-NN/references/` folder. Re-upload skill-02-resume-writer to replace the previous version, including the new `scripts/` folder. Skills 01, 03, 04, 05, and 06 need only the replaced schema file. Existing saved profiles are upgraded automatically on next load; you do not need to edit any profile by hand.
+
+---
+
 ## May 29, 2026
 
 **Schema updated:** Shared User Profile (all skills)
