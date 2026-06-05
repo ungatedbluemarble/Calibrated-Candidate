@@ -21,6 +21,29 @@ Match the user's background to the right industries and roles. Evaluate job desc
 - When evaluating a JD, distinguish between hard requirements (must-have) and preferred qualifications (nice-to-have). Many candidates self-reject on preferred items: surface this distinction.
 - Never present a role found through proactive search to the user without first verifying it is open, remote-eligible (if applicable), and has a working application path. This applies to every role the skill surfaces, not just roles the user brings in.
 - When a proactive role search returns fewer confirmed open roles than requested, do not pad the list or tell the user to search on their own. Instead run the No Results Protocol before ending the search.
+- Persistence and drift follow the shared contract in `/references/memory-integration.md`. The portable profile JSON is canonical; Claude's memory filesystem, when available and enabled, is a write-through cache. This skill writes new applications and fit verdicts to the live pipeline (`interview_history` in the JSON, mirrored to `/areas/job-search-pipeline.md` in memory). A role's status is written once, in the pipeline only, never duplicated elsewhere. Read before write, reconcile rather than blind-append, and tag only what the user states as `[stated]`.
+
+---
+
+## Up-Front Fit Gate: Location and Compensation
+
+Run this gate before any role matching, JD evaluation, resume tailoring, or research. It exists because the most common waste in a job search is investing effort in a role that was never viable on location or pay, facts that are usually knowable at the very start. Catch those two blockers first.
+
+Pull the user's hard constraints from the profile `search_status`: `target_locations`, `remote_preference`, and `compensation_target`. These come from the user's own intake. Never substitute an assumed or example figure for the user's stated floor; if a constraint is missing from the profile, ask the user for it rather than inferring one.
+
+**Location gate.** If a role requires on-site or hybrid presence inconsistent with the user's stated location and remote preference, flag relocation as a fit blocker immediately and surface it before going further:
+
+> "This role is [on-site / hybrid] in [location], which does not match your stated preference for [user's preference]. Relocation or commute would be required. Do you want me to keep evaluating it, treat it as remote-only-if-confirmed, or skip it?"
+
+Do not proceed to a full evaluation on a location-blocked role until the user decides.
+
+**Compensation gate.** If the role's compensation, where stated or reliably researched, falls below the user's stated floor, flag it as a fit blocker before investing in evaluation:
+
+> "The posted range for this role is [range]. That is below the floor you gave me of [user's floor]. Do you want me to keep going, or is that a hard stop?"
+
+When a role does not state compensation, do not invent a figure. Note that comp is unconfirmed and let the user decide whether to proceed on that basis.
+
+Both gates are blockers to surface, not automatic rejections. The user may have reasons to pursue a role that fails one. The gate's job is to make the blocker visible at the start so the decision is the user's and the effort is not spent blind. Once the user has directed how to handle any flagged blocker, proceed to the matching or evaluation sections below.
 
 ---
 
@@ -221,6 +244,23 @@ When the user is evaluating a specific company or role and needs market context:
 - Research the role: typical compensation range, common requirements in the market, how the title varies across companies
 - Surface any red flags: recent layoffs, negative Glassdoor patterns, legal or financial issues
 - Cite sources. Do not present unsourced claims as fact.
+
+---
+
+## Recording an Application to the Pipeline
+
+When the user decides to pursue a role (they say they are applying, have applied, or want it tracked), record it to the live pipeline so the dashboard, prep, and mock-interview skills inherit it without re-asking. This follows the shared contract in `/references/memory-integration.md`.
+
+Write a single pipeline entry per role to `interview_history` in the canonical JSON, and when memory is available and enabled, mirror it to `/areas/job-search-pipeline.md`. Use the `interview_history` shape defined in `/references/user-profile-schema.md`. At this stage you typically set company, role, stage (for example "applied" or "evaluating"), and a short fit-verdict note; leave interview-specific fields empty for the prep skill to fill later.
+
+Apply the drift contract on every write:
+- Confirm the entry with the user before writing it, in plain language: "I will add [Company] [Role] to your pipeline at stage [stage]. Right?"
+- A role's status lives in this pipeline entry and nowhere else. Do not duplicate it into the profile identity or the strategy file.
+- Read the current pipeline before writing. If an entry for this company and role already exists, reconcile rather than creating a duplicate: update the existing entry and preserve history as "now X, previously Y."
+- Record the fit verdict as your assessment, not as a user-stated fact. Tag only the user's own statements (their decision to apply, their stated constraints) as `[stated]`.
+- Exclude compensation figures and sensitive identifiers from the memory pipeline file; they stay in the user-controlled JSON only.
+
+After writing, prompt the user to save their profile so the JSON persists, and note that the memory pipeline updated if it was available. If memory was unavailable, remind them the saved file is how the pipeline carries forward.
 
 ---
 
