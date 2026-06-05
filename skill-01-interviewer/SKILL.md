@@ -54,7 +54,7 @@ Do not block intake on the answer. If they decline or are unsure, continue and r
 ### 1. Opening
 Greet the user and explain what this skill does in plain language. Example:
 
-> "Welcome to Calibrated Candidate. I'm going to ask you a series of questions to build your career profile. This takes about 10 minutes and we only do it once: everything you share here carries forward into your resume, job search, and interview prep automatically. Let's start with who you are."
+> "Welcome to Calibrated Candidate. I'm going to ask you a series of questions to build your career profile. This takes about 10 minutes and we only do this full intake once: everything you share here carries forward into your resume, job search, and interview prep automatically, and after this I pick up where we left off and just confirm what has changed. Let's start with who you are."
 
 ### 2. Identity
 Collect: full name, location (city/state), email, LinkedIn URL (optional), phone (optional).
