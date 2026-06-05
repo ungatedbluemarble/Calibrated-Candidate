@@ -21,6 +21,7 @@ Do not rush this. The quality of every downstream output depends on the depth of
 - Never ask a question the user has already answered in this session.
 - If the user uploads a resume during or before onboarding, extract what you can from it and confirm with the user rather than re-asking those fields.
 - If a profile file is provided (`calibrated_candidate_profile.json`), load it, confirm key fields, and skip what is already populated.
+- Persistence follows the shared contract in `/references/memory-integration.md`. The portable profile JSON is canonical and always works. Claude's memory filesystem, when available and enabled, is a write-through cache layered on top of it. Run the memory detection and enable-prompt step below before intake so a returning user is recognized and a new user is told how to turn on persistence. Never treat memory as primary, and never assume it is present.
 - Maintain a professional, encouraging tone throughout. The user may be in a vulnerable position: job searching is stressful. Be direct, not clinical.
 - Do not offer advice, coaching, or optimization during intake. Capture first. The other skills handle analysis.
 
@@ -29,6 +30,26 @@ Do not rush this. The quality of every downstream output depends on the depth of
 ## Onboarding Sequence
 
 Work through these topic areas in order. Each may require follow-up questions based on the user's answers.
+
+### 0. Memory Check and Returning-User Recognition
+
+Run this before the Opening. It follows the shared contract in `/references/memory-integration.md`; read that file for the full persistence model. The goal is to recognize a returning user without re-interviewing them, and to tell a new user how to turn on persistence.
+
+Attempt to read the memory namespace (`/profile.md`, `/areas/job-search.md`). One of three states results:
+
+**Memory available and populated (returning user).** Load `/profile.md` and `/areas/job-search.md`. Do not re-run intake from scratch. Greet the user by name, summarize what you already have, and ask only what has changed:
+
+> "Welcome back, [name]. I have your profile from last time: [one-line summary of role, target lanes, and search status]. Before we continue, has anything changed: your role, what you are targeting, or your constraints?"
+
+If the user also uploads a profile JSON, reconcile it against memory per the contract: the JSON is canonical, so on any disagreement surface the conflict and let the user resolve it, and if they do not, the JSON value stands. Apply any stated changes, writing history as "now X, previously Y" rather than overwriting silently. Tag only what the user actually says as `[stated]`.
+
+**Memory available but empty (new user, or first time on this surface).** Proceed with the full intake below. As you capture identity and strategy, write through to `/profile.md` and `/areas/job-search.md` per the contract.
+
+**Memory unavailable (surface does not support it, or the user has it switched off).** Prompt once, then proceed on the JSON path:
+
+> "Calibrated Candidate can remember your profile and your live application pipeline between sessions if you turn on memory. It is off by default. You can enable it in your Claude settings under Capabilities, then come back and I will pick up automatically. Without memory, everything still works: I will give you a profile file to save and re-upload at the start of each session instead. Want to turn it on now, or continue without it?"
+
+Do not block intake on the answer. If they decline or are unsure, continue and rely on the JSON. Do not ask again this session.
 
 ### 1. Opening
 Greet the user and explain what this skill does in plain language. Example:
@@ -107,8 +128,17 @@ Apply any corrections, then confirm the profile is saved.
 After intake is complete, construct the profile object per the schema defined in:
 `/references/user-profile-schema.md`
 
+This JSON object is the canonical record (see `/references/memory-integration.md`). When memory is available and enabled, also write through to memory as the convenience cache:
+- `/profile.md`: the identity anchor (name, location, current role and employer, durable facts). Mirror `identity` and the stable parts of `background`. Tag entries `[stated]`.
+- `/areas/job-search.md`: the strategy (target lanes, constraints, exclusions, fit pattern), with the flag set to `ACTIVE`. Mirror `search_status`.
+
+Keep memory and JSON in agreement. Do not write search-specific or high-churn data into `/profile.md`; the pipeline lives in `/areas/job-search-pipeline.md` and is written by the job-search and pipeline-dashboard skills, not here. Exclude compensation figures and sensitive identifiers from memory per the contract; they remain in the user-controlled JSON only.
+
 Inform the user:
 > "Your profile is ready. You can continue in this session and your information will carry forward automatically. If you want to save your profile to use in a future session, say 'save my profile' and I will export it as a file you can upload later."
+
+If memory was unavailable, add:
+> "Since memory is off, saving this file is how your profile carries to your next session. Turn on memory in Claude settings under Capabilities if you would rather I remember it automatically."
 
 If the user requests export, write the profile as `calibrated_candidate_profile.json` to the output directory.
 
